@@ -5,3 +5,16 @@ __pycache__/
 venv/
 results/**/*.jsonl
 .DS_Store
+
+# rxndata pipeline: raw downloads + per-phase interim are cached/DVC-tracked, not committed.
+data/raw/
+data/interim/
+# Cloned upstream repo (reproduced by `make setup`), not vendored into git history.
+third_party/oMeBench/
+# But DO keep the directory scaffolding + curated reason-code READMEs.
+!data/quarantine/
+!data/rejects/
+!data/final/
+*.egg-info/
+build/
+dist/

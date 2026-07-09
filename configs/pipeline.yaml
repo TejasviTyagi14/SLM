@@ -1,0 +1,137 @@
+# rxndata pipeline configuration
+# Every threshold, seed, and source toggle lives here so `make all` is fully
+# reproducible and the only thing that changes behavior is this file.
+
+seed: 20240709            # global RNG seed; every stochastic step derives from it
+
+paths:
+  root: .
+  raw: data/raw                 # cached source downloads (gitignored, DVC-tracked)
+  interim: data/interim         # per-phase parquet
+  quarantine: data/quarantine   # unclear-license, needs human decision
+  rejects: data/rejects         # failed validation, with reason codes
+  final: data/final             # released JSONL + data card
+  configs: configs
+  ontology: configs/ontology.json
+  # Reuse the oMeBench data already vendored in this repo rather than re-downloading.
+  omebench_gold: data/oMe_Gold.json
+  omebench_template: data/oMe_Template.json
+  omebench_silver: data/oMe_Silver.jsonl
+  omebench_repo: third_party/oMeBench
+
+# Which ingesters run. Flip to false to skip a source without deleting its module.
+# `verdict` is filled from the Phase-0 license research and gates ingestion:
+#   usable                    -> ingest into the commercial-cleared release
+#   usable_for_research_only  -> ingest but keep separable; NC flag in data card
+#   quarantine                -> do NOT ingest; park raw pull in data/quarantine
+sources:
+  # Verdicts below are from the Phase-0 license research, verified by direct fetch
+  # of each source's own terms page on 2026-07-09. See configs/license_inventory.json.
+  # ---- TIER A: elementary mechanistic steps (benchmark-critical) ----
+  # SPEC CORRECTION: the spec assumed PMechDB="public/academic" and RMechDB="CC-BY-4.0".
+  # BOTH are actually CC-BY-NC-ND-4.0 (the *paper* is CC-BY; the *dataset* is NC-ND).
+  # The ND clause forbids redistributing a derived corpus -> QUARANTINE, needs human OK.
+  pmechdb:      {enabled: false, tier: A, verdict: quarantine, license: "CC-BY-NC-ND-4.0"}
+  rmechdb:      {enabled: false, tier: A, verdict: quarantine, license: "CC-BY-NC-ND-4.0"}
+  ome_silver:   {enabled: true,  tier: A, verdict: usable,     license: "MIT"}   # this repo
+  ome_template: {enabled: true,  tier: A, verdict: usable,     license: "MIT"}   # this repo
+  # ---- TIER B: overall reactions (supporting) ----
+  ord:          {enabled: true,  tier: B, verdict: usable,     license: "CC-BY-SA-4.0"}  # share-alike
+  uspto_lowe:   {enabled: true,  tier: B, verdict: usable,     license: "CC0-1.0"}       # public domain
+  # ---- TIER C: open textbooks & named reactions (prose + name->structure) ----
+  # OpenStax explicitly prohibits AI training/ingestion -> QUARANTINE.
+  openstax:     {enabled: false, tier: C, verdict: quarantine, license: "CC-BY-NC-SA-4.0+no-AI"}
+  # LibreTexts is CC-BY-NC-SA: usable but NON-COMMERCIAL -> research-only, kept separable.
+  libretexts:   {enabled: false, tier: C, verdict: usable_for_research_only, license: "CC-BY-NC-SA-4.0"}
+  wikipedia:    {enabled: true,  tier: C, verdict: usable,     license: "CC-BY-SA-4.0"}  # share-alike
+
+# Politeness for any HTTP fetching. Prefer official bulk dumps/APIs over scraping.
+http:
+  user_agent: "rxndata-bot/0.1 (+research; contact: set-me@example.com)"
+  max_requests_per_sec_per_host: 1.0
+  backoff:
+    initial_sec: 2.0
+    factor: 2.0
+    max_sec: 120.0
+    max_retries: 5
+  respect_robots_txt: true
+  cache_raw: true            # cache every response under paths.raw so re-runs don't re-hit
+
+normalization:
+  # One documented convention, applied everywhere (Phase 2).
+  tautomer_convention: rdkit_canonical      # RDKit MolStandardize TautomerEnumerator canonical
+  neutralize_charges: false                 # mechanisms carry real charges; do NOT neutralize
+  remove_stereo: false                      # keep stereo; oMeS canonicalization is stereo-aware
+  molecule_key: inchikey                    # dedup molecule vocabulary by InChIKey
+  keep_atom_maps_through_canon: true        # preserve atom-map numbers across canonicalization
+
+mechanism:
+  # Phase 3 controls.
+  inferred_fraction_cap: 0.20      # <=20% of mechanism records may be provenance=inferred
+  template_expansion:
+    enabled: true
+    max_instances_per_template: 40 # bounded expansion to avoid one template dominating
+    dedup_expanded: true
+  provenance_rank: [curated, template_expanded, inferred]   # dedup keeps highest
+
+atommap:
+  backend: rxnmapper
+  min_confidence: 0.30             # below this -> quarantine the mapping (Phase 4)
+
+validation:
+  # Phase 5 gates. A record failing any of these goes to data/rejects/ with a code.
+  require_sanitize: true
+  require_valence_ok: true
+  require_atom_balance: true       # per elementary step, modulo declared reagents
+  require_charge_balance: true
+  require_step_continuity: true    # intermediate n reachable from n-1 by one transformation
+  reject_noop_steps: true          # duplicate / identity steps are rejected
+  # Atom/charge balance tolerance for declared-reagent accounting.
+  balance:
+    allow_declared_reagents: true
+    max_unaccounted_heavy_atoms: 0
+
+decontamination:
+  # Phase 6. Blacklist = oMe-Gold + oMe-Template. Applies to oMe-Silver too.
+  blacklist: [omebench_gold, omebench_template]
+  reaction_fp:
+    type: morgan_difference        # RDKit difference fingerprint over reactants/products
+    radius: 2
+    nbits: 2048
+  tanimoto_threshold: 0.95         # remove candidate if >= this vs any blacklist entry
+  match_on:
+    inchikey_set: true             # exact reactant-set + product-set InChIKey match
+    reaction_fingerprint: true
+    mechanism_string_hash: true
+
+dedup:
+  # Phase 7. Near-duplicate removal across surviving records.
+  reaction_fp_tanimoto_threshold: 0.97
+  use_mechanism_hash: true
+
+splits:
+  # Phase 9. Test is ALWAYS the official oMe-Gold; never trained on.
+  test: omebench_gold
+  val_fraction: 0.05
+  stratify_by: [subtype, level]
+  seed_from_global: true
+
+tasks:
+  # Phase 8 task views to emit. Each example carries a `task` tag.
+  emit:
+    - mechanism_full
+    - mechanism_next_step
+    - forward_prediction
+    - retrosynthesis
+    - reagent_prediction
+    - named_reaction_qa
+  pretrain_corpus:
+    enabled: true
+    include: [reaction_smiles_mapped, step_sequences, textbook_prose]
+  # Train-time formatting MUST mirror eval-time formatting.
+  prompt_template: prompts/default.txt
+  cot_prompt_template: prompts/cot.txt
+
+output:
+  parquet_engine: pyarrow
+  jsonl_indent: null               # compact JSONL for final release

@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rxndata"
+version = "0.1.0"
+description = "Reproducible pipeline for a mechanism-step training dataset optimized for oMeBench/oMeS"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+
+# Pinned so `make all` is reproducible on a clean checkout. Versions verified
+# available on PyPI 2026-07-09. RDKit is the cheminformatics gate (sanitize,
+# valence, fingerprints, reaction handling); do not hand-roll any of it.
+dependencies = [
+  "rdkit==2025.9.2",
+  "pyyaml==6.0.2",
+  "pandas==2.2.3",
+  "polars==1.36.1",
+  "pyarrow==21.0.0",
+  "numpy==1.26.4",
+  "requests==2.32.3",
+  "tqdm==4.67.1",
+  # Name -> structure resolution for textbook-mined reactions (Tier C).
+  # py2opsin bundles the OPSIN Java jar; still needs a JRE on PATH at runtime.
+  "py2opsin==1.2.0",
+]
+
+[project.optional-dependencies]
+# Atom-atom mapping (Phase 4). Pulled into its own extra because it drags in a
+# transformers/torch stack that the ingest/normalize phases don't need.
+atommap = [
+  "rxnmapper==0.4.3",
+]
+# Reading Open Reaction Database .pb.gz records (Tier B, Phase 1).
+ord = [
+  "ord-schema==0.3.37",
+  "protobuf>=3.20,<5",
+]
+# Final export + tokenization sanity checks (Phase 8/9).
+hf = [
+  "datasets==3.6.0",
+]
+# Dev / reproducibility tooling.
+dev = [
+  "pytest==8.3.5",
+  "ruff==0.9.10",
+  "dvc==3.61.0",
+]
+
+[project.scripts]
+rxndata-ontology = "rxndata.ontology:__main__"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]  # long verbatim SMILES/clauses in data/test fixtures
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"

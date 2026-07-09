@@ -1,0 +1,440 @@
+{
+  "_meta": {
+    "description": "oMeBench type/subtype ontology parsed from the benchmark's own prompt + data files. Do not edit by hand; regenerate with `python -m rxndata.ontology`.",
+    "source_prompt": "prompts/default.txt",
+    "source_gold": "data/oMe_Gold.json",
+    "source_template": "data/oMe_Template.json",
+    "alignment_key": "subtype",
+    "n_types": 11,
+    "n_subtypes": 31
+  },
+  "types": [
+    "addition",
+    "cleavage",
+    "coordination",
+    "dissociation",
+    "electron_transfer",
+    "elimination",
+    "pericyclic",
+    "proton_transfer",
+    "radical",
+    "rearrangement",
+    "substitution"
+  ],
+  "subtypes": [
+    "nucleophilic_addition",
+    "electrophilic_addition",
+    "radical_addition",
+    "oxidative_addition",
+    "proton_elimination",
+    "leaving_group_elimination",
+    "radical_elimination",
+    "reductive_elimination",
+    "nucleophilic_substitution",
+    "electrophilic_substitution",
+    "radical_substitution",
+    "1,2-shift",
+    "radical_rearrangement",
+    "migratory insertion",
+    "acid_base_proton_transfer",
+    "single_electron_transfer",
+    "radical_initiation",
+    "radical_propagation",
+    "radical_termination",
+    "radical_coupling",
+    "cycloaddition",
+    "cycloreversion",
+    "electrocyclization",
+    "sigmatropic_rearrangement",
+    "group_transfer",
+    "ene_reaction",
+    "cheletropic_reaction",
+    "heterolytic_cleavage",
+    "homolytic_cleavage",
+    "coordination",
+    "dissociation"
+  ],
+  "pairs": [
+    {
+      "type": "addition",
+      "subtype": "nucleophilic_addition",
+      "description": "Nucleophile attacks an electrophilic center",
+      "n_gold": 166,
+      "n_template": 135
+    },
+    {
+      "type": "addition",
+      "subtype": "electrophilic_addition",
+      "description": "Electrophile adds to an electron-rich system such as an alkene",
+      "n_gold": 19,
+      "n_template": 17
+    },
+    {
+      "type": "addition",
+      "subtype": "radical_addition",
+      "description": "Radical adds to a pi-bond system",
+      "n_gold": 1,
+      "n_template": 0
+    },
+    {
+      "type": "addition",
+      "subtype": "oxidative_addition",
+      "description": "A covalent bond breaks and both atoms attach to a low-valent metal",
+      "n_gold": 12,
+      "n_template": 12
+    },
+    {
+      "type": "elimination",
+      "subtype": "proton_elimination",
+      "description": "Beta-H proton abstraction forms a double bond, as in E1",
+      "n_gold": 20,
+      "n_template": 13
+    },
+    {
+      "type": "elimination",
+      "subtype": "leaving_group_elimination",
+      "description": "Leaving group departure occurs with double-bond formation",
+      "n_gold": 134,
+      "n_template": 111
+    },
+    {
+      "type": "elimination",
+      "subtype": "radical_elimination",
+      "description": "Radical eliminates a small fragment to form a pi bond",
+      "n_gold": 2,
+      "n_template": 2
+    },
+    {
+      "type": "elimination",
+      "subtype": "reductive_elimination",
+      "description": "The reverse of oxidative addition",
+      "n_gold": 5,
+      "n_template": 5
+    },
+    {
+      "type": "substitution",
+      "subtype": "nucleophilic_substitution",
+      "description": "Nucleophile replaces a leaving group",
+      "n_gold": 63,
+      "n_template": 57
+    },
+    {
+      "type": "substitution",
+      "subtype": "electrophilic_substitution",
+      "description": "Electrophile replaces a hydrogen atom on an aromatic ring",
+      "n_gold": 18,
+      "n_template": 15
+    },
+    {
+      "type": "substitution",
+      "subtype": "radical_substitution",
+      "description": "Radical replaces a group within a sigma bond",
+      "n_gold": 4,
+      "n_template": 3
+    },
+    {
+      "type": "rearrangement",
+      "subtype": "1,2-shift",
+      "description": "1,2-alkyl or hydride shift within a carbocation",
+      "n_gold": 18,
+      "n_template": 16
+    },
+    {
+      "type": "rearrangement",
+      "subtype": "radical_rearrangement",
+      "description": "Radical migrates to a different position",
+      "n_gold": 1,
+      "n_template": 1
+    },
+    {
+      "type": "rearrangement",
+      "subtype": "migratory insertion",
+      "description": "One ligand migrates and inserts into a metal-ligand bond",
+      "n_gold": 0,
+      "n_template": 0
+    },
+    {
+      "type": "proton_transfer",
+      "subtype": "acid_base_proton_transfer",
+      "description": "Proton migrates between a donor and an acceptor",
+      "n_gold": 289,
+      "n_template": 233
+    },
+    {
+      "type": "electron_transfer",
+      "subtype": "single_electron_transfer",
+      "description": "Single electron moves from donor to acceptor",
+      "n_gold": 11,
+      "n_template": 11
+    },
+    {
+      "type": "radical",
+      "subtype": "radical_initiation",
+      "description": "Generation of radicals",
+      "n_gold": 4,
+      "n_template": 4
+    },
+    {
+      "type": "radical",
+      "subtype": "radical_propagation",
+      "description": "Radical chain propagation step",
+      "n_gold": 2,
+      "n_template": 2
+    },
+    {
+      "type": "radical",
+      "subtype": "radical_termination",
+      "description": "Two radicals combine to terminate a chain",
+      "n_gold": 1,
+      "n_template": 1
+    },
+    {
+      "type": "radical",
+      "subtype": "radical_coupling",
+      "description": "Two radicals form a new bond directly",
+      "n_gold": 6,
+      "n_template": 5
+    },
+    {
+      "type": "pericyclic",
+      "subtype": "cycloaddition",
+      "description": "Two pi systems combine to form a ring",
+      "n_gold": 12,
+      "n_template": 7
+    },
+    {
+      "type": "pericyclic",
+      "subtype": "cycloreversion",
+      "description": "The reverse of cycloaddition",
+      "n_gold": 4,
+      "n_template": 3
+    },
+    {
+      "type": "pericyclic",
+      "subtype": "electrocyclization",
+      "description": "Ring closure or opening via conjugated pi-system rotation",
+      "n_gold": 8,
+      "n_template": 7
+    },
+    {
+      "type": "pericyclic",
+      "subtype": "sigmatropic_rearrangement",
+      "description": "Migration of a sigma bond across a pi system",
+      "n_gold": 16,
+      "n_template": 11
+    },
+    {
+      "type": "pericyclic",
+      "subtype": "group_transfer",
+      "description": "Group transfer through a concerted cyclic pathway",
+      "n_gold": 1,
+      "n_template": 3
+    },
+    {
+      "type": "pericyclic",
+      "subtype": "ene_reaction",
+      "description": "Allylic hydrogen transfer with new sigma-bond formation",
+      "n_gold": 1,
+      "n_template": 1
+    },
+    {
+      "type": "pericyclic",
+      "subtype": "cheletropic_reaction",
+      "description": "Two new bonds form to the same atom",
+      "n_gold": 3,
+      "n_template": 2
+    },
+    {
+      "type": "cleavage",
+      "subtype": "heterolytic_cleavage",
+      "description": "Bond breaks with both electrons going to one fragment",
+      "n_gold": 19,
+      "n_template": 13
+    },
+    {
+      "type": "cleavage",
+      "subtype": "homolytic_cleavage",
+      "description": "Bond breaks evenly with one electron to each fragment",
+      "n_gold": 3,
+      "n_template": 4
+    },
+    {
+      "type": "coordination",
+      "subtype": "coordination",
+      "description": "A ligand attaches to a central metal atom",
+      "n_gold": 13,
+      "n_template": 0
+    },
+    {
+      "type": "dissociation",
+      "subtype": "dissociation",
+      "description": "A ligand detaches from a central metal atom",
+      "n_gold": 2,
+      "n_template": 3
+    }
+  ],
+  "subtype_to_type": {
+    "nucleophilic_addition": "addition",
+    "electrophilic_addition": "addition",
+    "radical_addition": "addition",
+    "oxidative_addition": "addition",
+    "proton_elimination": "elimination",
+    "leaving_group_elimination": "elimination",
+    "radical_elimination": "elimination",
+    "reductive_elimination": "elimination",
+    "nucleophilic_substitution": "substitution",
+    "electrophilic_substitution": "substitution",
+    "radical_substitution": "substitution",
+    "1,2-shift": "rearrangement",
+    "radical_rearrangement": "rearrangement",
+    "migratory insertion": "rearrangement",
+    "acid_base_proton_transfer": "proton_transfer",
+    "single_electron_transfer": "electron_transfer",
+    "radical_initiation": "radical",
+    "radical_propagation": "radical",
+    "radical_termination": "radical",
+    "radical_coupling": "radical",
+    "cycloaddition": "pericyclic",
+    "cycloreversion": "pericyclic",
+    "electrocyclization": "pericyclic",
+    "sigmatropic_rearrangement": "pericyclic",
+    "group_transfer": "pericyclic",
+    "ene_reaction": "pericyclic",
+    "cheletropic_reaction": "pericyclic",
+    "heterolytic_cleavage": "cleavage",
+    "homolytic_cleavage": "cleavage",
+    "coordination": "coordination",
+    "dissociation": "dissociation"
+  },
+  "crosscheck": {
+    "used_pairs_not_in_allowed": [
+      [
+        "addition",
+        "intramolecular_nucleophilic_addition"
+      ],
+      [
+        "aromatization",
+        "dehydration"
+      ],
+      [
+        "coordination",
+        "lewis_acid_base_coordination"
+      ],
+      [
+        "cyclization",
+        "aromatic_electrophilic_substitution"
+      ],
+      [
+        "elimination",
+        "cycloreversion"
+      ],
+      [
+        "proton_transfer",
+        "intramolecular_proton_transfer"
+      ],
+      [
+        "radical",
+        "radical_substitution"
+      ],
+      [
+        "rearrangement",
+        "hydride_shift"
+      ],
+      [
+        "rearrangement",
+        "rearrangement"
+      ],
+      [
+        "rearrangement",
+        "sigmatropic_rearrangement"
+      ]
+    ],
+    "gold_pairs_not_in_allowed": [],
+    "template_pairs_not_in_allowed": [
+      [
+        "addition",
+        "intramolecular_nucleophilic_addition"
+      ],
+      [
+        "aromatization",
+        "dehydration"
+      ],
+      [
+        "coordination",
+        "lewis_acid_base_coordination"
+      ],
+      [
+        "cyclization",
+        "aromatic_electrophilic_substitution"
+      ],
+      [
+        "elimination",
+        "cycloreversion"
+      ],
+      [
+        "proton_transfer",
+        "intramolecular_proton_transfer"
+      ],
+      [
+        "radical",
+        "radical_substitution"
+      ],
+      [
+        "rearrangement",
+        "hydride_shift"
+      ],
+      [
+        "rearrangement",
+        "rearrangement"
+      ],
+      [
+        "rearrangement",
+        "sigmatropic_rearrangement"
+      ]
+    ],
+    "allowed_pairs_never_used": [
+      [
+        "rearrangement",
+        "migratory insertion"
+      ]
+    ],
+    "subtype_type_conflicts": {},
+    "gold_is_clean": true
+  },
+  "template_remap": {
+    "rearrangement::sigmatropic_rearrangement": [
+      "pericyclic",
+      "sigmatropic_rearrangement"
+    ],
+    "elimination::cycloreversion": [
+      "pericyclic",
+      "cycloreversion"
+    ],
+    "coordination::lewis_acid_base_coordination": [
+      "coordination",
+      "coordination"
+    ],
+    "radical::radical_substitution": [
+      "substitution",
+      "radical_substitution"
+    ],
+    "proton_transfer::intramolecular_proton_transfer": [
+      "proton_transfer",
+      "acid_base_proton_transfer"
+    ],
+    "addition::intramolecular_nucleophilic_addition": [
+      "addition",
+      "nucleophilic_addition"
+    ],
+    "rearrangement::hydride_shift": [
+      "rearrangement",
+      "1,2-shift"
+    ],
+    "rearrangement::rearrangement": null,
+    "cyclization::aromatic_electrophilic_substitution": [
+      "substitution",
+      "electrophilic_substitution"
+    ],
+    "aromatization::dehydration": null
+  }
+}

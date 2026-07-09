@@ -1,0 +1,176 @@
+{
+  "findings": [
+    {
+      "source": "Open Reaction Database (ORD) \u2014 ~2M reactions incl. USPTO (Tier B)",
+      "license_spdx": "CC-BY-SA-4.0",
+      "permits_ml_use": "yes",
+      "permits_redistribution": "yes",
+      "permits_commercial": "yes",
+      "obligations": [
+        "attribution",
+        "share-alike"
+      ],
+      "verbatim_clause": "Data-governing policy (docs overview): \"All data submitted to the database will be made available under the [CC-BY-SA] license, a well-known license for creative works\" while \"the various software tools developed for the database will be made available under the [Apache] license.\" | The ord-data LICENSE file is the Creative Commons Attribution-ShareAlike 4.0 International Public License, which grants (Sec. 2.a.1) the right to \"reproduce and Share the Licensed Material, in whole or in part\" and to \"produce, reproduce, and Share Adapted Material,\" subject to Attribution \u2014 \"If You Share the Licensed Material (including in modified form), You must: retain... identification of the creator(s)... a copyright notice... a notice that refers to this Public License... a notice that refers to the disclaimer of warranties... a URI or hyperlink to the Licensed Material\" and indicate modifications \u2014 and ShareAlike (Sec. 3.b.1): \"The Adapter's License You apply must be a Creative Commons license with the same License Elements, this version or later, or a BY-SA Compatible License.\"",
+      "clause_url": "https://docs.open-reaction-database.org/en/latest/overview.html (data policy); https://github.com/open-reaction-database/ord-data (CC-BY-SA-4.0 LICENSE); https://raw.githubusercontent.com/open-reaction-database/ord-data/main/LICENSE (full CC-BY-SA-4.0 text)",
+      "confidence": "high",
+      "notes": "Two separate licenses apply and must not be confused: the DATA (ord-data repo, ~2M reactions) is CC-BY-SA-4.0; the software/schema code (ord-schema repo) is Apache-2.0. For ingesting and redistributing the DATA, CC-BY-SA-4.0 governs. Compliance summary: (a) ML training use = YES (CC-BY-SA permits use for any purpose, including commercial); (b) redistribution of derived data = YES, but ShareAlike/copyleft requires any adapted/derived material to be released under CC-BY-SA-4.0 (or a compatible BY-SA / later version) \u2014 this is the key constraint for a training-data pipeline, as derivative datasets that constitute \"Adapted Material\" inherit the copyleft obligation; (c) commercial use = YES (this is BY-SA, not an NC license). Obligations: attribution (credit ORD, copyright notice, license reference/link, indicate modifications) AND share-alike. Note on USPTO subset: the USPTO reactions are originally US-government-derived / public-domain patent text, but as aggregated and redistributed by ORD they are offered under CC-BY-SA-4.0; the governing terms for pulling FROM ORD are CC-BY-SA-4.0. The docs.open-reaction-database.org/en/latest/ landing page and overview.html did not render inline license text but link to the \"Commitment to Open Access\" overview which states the CC-BY-SA policy. Recommend legal review of the share-alike implications before mixing this data into a non-share-alike training corpus."
+    },
+    {
+      "source": "RMechDB (Baldi Research Group, UC Irvine) \u2014 deeprxn.igb.uci.edu/rmechdb",
+      "license_spdx": "CC-BY-NC-ND-4.0",
+      "permits_ml_use": "unclear",
+      "permits_redistribution": "no",
+      "permits_commercial": "no",
+      "obligations": [
+        "attribution (must reference the original work, RMechDB)",
+        "non-commercial-only (NC)",
+        "no-derivatives / share-verbatim-only (ND)",
+        "cite-paper (JCIM 2023, DOI:10.1021/acs.jcim.2c01359)",
+        "click-through acceptance of license terms required to obtain the data"
+      ],
+      "verbatim_clause": "From the RMechDB download page: \"The data is released under the CC-BY-NC-ND license.\" \u2014 \"users are allowed to download the data and distribute it as long as they reference the original work (RMechDB)\" \u2014 \"they are not allowed to change the data in any way or use them commercially.\" \u2014 \"By checking this box, you agree to all the terms and conditions of the license (CC-BY-NC-ND).\" (Full license text linked to creativecommons.org/licenses/by-nc-nd/4.0/legalcode.)",
+      "clause_url": "https://deeprxn.igb.uci.edu/rmechdb/download",
+      "confidence": "high",
+      "notes": "GOVERNING LICENSE FOR THE DATA: CC-BY-NC-ND 4.0, stated explicitly and in plain language on the RMechDB download page and confirmed on the how-to-use page. Access requires entering name/email and clicking through to accept the CC-BY-NC-ND terms; the dataset is then emailed.\n\nIMPORTANT DISTINCTION: The associated journal article (RMechDB, J. Chem. Inf. Model. 2023, DOI:10.1021/acs.jcim.2c01359) is published open-access under CC-BY-4.0 (permits commercial use and derivatives). Do NOT conflate this with the DATA. The DATA download is CC-BY-NC-ND 4.0 \u2014 much more restrictive. For an ingest/redistribute training-data pipeline, the CC-BY-NC-ND data license governs.\n\nIMPLICATIONS FOR OUR PIPELINE (ingest + redistribute in an ML training dataset):\n(a) ML training use = UNCLEAR / effectively NO for our purpose. The license predates and does not mention ML training. Two blockers apply: NC forbids any commercial use, and ND forbids creating/distributing adaptations. Reformatting/curating the data into a training dataset, or distributing a dataset/model derived from it, is very likely an 'adaptation' barred by ND. Pure non-commercial, verbatim, internal use might be arguable, but building a redistributable training corpus is not clearly permitted. Do not treat as permitted without counsel/permission.\n(b) Redistribution of DERIVED data = NO. ND explicitly prohibits distributing modified/adapted versions ('not allowed to change the data in any way'). Only verbatim, unchanged redistribution with attribution is allowed. A training dataset that reformats, filters, augments, or transforms the records would violate ND.\n(c) Commercial use = NO. NC prohibits it outright ('not ... use them commercially').\n\nRECOMMENDATION: This source is NOT clearable for a redistributable and/or commercial ML training dataset under its stated terms. If the data is genuinely needed, seek explicit written permission/relicensing from the Baldi Research Group (UCI) \u2014 contact via deeprxn.igb.uci.edu/rmechdb/contact. Note: chemdb.igb.uci.edu returned an expired-TLS-certificate error and could not be fetched; the definitive terms were obtained from the deeprxn.igb.uci.edu/rmechdb pages. Also note underlying data provenance: ~3,000 steps derived from the Master Chemical Mechanism (MCM) website and ~2,000 from textbooks/publications \u2014 third-party upstream terms may impose additional constraints."
+    },
+    {
+      "source": "USPTO (Lowe) \u2014 \"Chemical reactions from US patents (1976-Sep2016)\" by Daniel Lowe, hosted on figshare (DOI 10.6084/m9.figshare.5104873.v1)",
+      "license_spdx": "CC0-1.0",
+      "permits_ml_use": "yes",
+      "permits_redistribution": "yes",
+      "permits_commercial": "yes",
+      "obligations": [
+        "none legally required (CC0 = full public-domain dedication)",
+        "citing Lowe (2017) is an academic-norm courtesy only, not a license condition"
+      ],
+      "verbatim_clause": "figshare license metadata for article 5104873 (via api.figshare.com/v2/articles/5104873): \"license\": { \"value\": 2, \"name\": \"CC0\", \"url\": \"https://creativecommons.org/publicdomain/zero/1.0/\" }. CC0 1.0 deed governing text: \"You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.\" and the dedicator \"dedicated the work to the public domain by waiving all of his or her rights to the work worldwide under copyright law\". Underlying USPTO source (uspto.gov/terms-use-uspto-websites): most USPTO-produced materials are \"not subject to copyright restrictions\" in the U.S. and are in the public domain; patent text/drawings are \"typically not copyright-restricted\" (with limited exceptions).",
+      "clause_url": "https://creativecommons.org/publicdomain/zero/1.0/ (license assignment confirmed via https://api.figshare.com/v2/articles/5104873 ; dataset landing page https://figshare.com/articles/dataset/Chemical_reactions_from_US_patents_1976-Sep2016_/5104873)",
+      "confidence": "high",
+      "notes": "The figshare landing page returned HTTP 403 to a direct fetch, so I queried the authoritative figshare REST API (api.figshare.com/v2/articles/5104873), which returns the canonical license metadata for this exact record: CC0 1.0 (public-domain dedication), published 2017-06-13, DOI 10.6084/m9.figshare.5104873.v1. CC0 imposes NO share-alike, NO non-commercial restriction, and NO attribution obligation, so all three intended uses (ML training, redistribution of derived data, commercial use) are permitted without asking permission. Two independent bases reinforce this: (1) figshare's CC0 dedication by the author, and (2) the underlying raw material is US patent text, which is US public domain. Recommended good practice (not a legal requirement): retain the citation \"Lowe, Daniel (2017). Chemical reactions from US patents (1976-Sep2016). figshare. Dataset. https://doi.org/10.6084/m9.figshare.5104873.v1\" as an academic courtesy. Minor caveats, none blocking: (a) the extraction pipeline used third-party tools (NextMove LeadMine, Epam Indigo) to PRODUCE the data, but those tool licenses do not attach to the CC0-dedicated output data; (b) USPTO notes rare exceptions where some patent content originates from private parties and may carry third-party copyright, but this is generic to all patent data and does not alter the CC0 dedication of Lowe's extractions. No conflicting or ambiguous license statements were found."
+    },
+    {
+      "source": "OpenStax Organic Chemistry (Tier C) \u2014 open textbook by John McMurry (\"A Tenth Edition\"), published by OpenStax / Rice University",
+      "license_spdx": "CC-BY-NC-SA-4.0",
+      "permits_ml_use": "no",
+      "permits_redistribution": "unclear",
+      "permits_commercial": "no",
+      "obligations": [
+        "attribution",
+        "share-alike",
+        "non-commercial-only",
+        "no-LLM-AI-training-or-ingestion-without-OpenStax-permission"
+      ],
+      "verbatim_clause": "LICENSE (per-page footer + why-this-chapter page): \"Textbook content produced by OpenStax is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike License.\" / \"\u00a9 1999-2026, Rice University.\" \u2014 Also stated in the preface: \"Organic Chemistry ... is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 (CC BY-NC-SA) license, which means that you can non-commercially distribute, remix, and build upon the content, as long as you provide attribution to OpenStax and its content contributors, under the same license.\" | EXPLICIT AI PROHIBITION (why-this-chapter page, confirmed by two independent fetches and web search): \"This book may not be used in the training of large language models or otherwise be ingested into large language models or generative AI offerings without OpenStax's permission.\" | ATTRIBUTION (digital): \"Access for free at https://openstax.org/books/organic-chemistry/pages/1-why-this-chapter\"",
+      "clause_url": "https://openstax.org/books/organic-chemistry/pages/1-why-this-chapter",
+      "confidence": "high",
+      "notes": "DO NOT INGEST. This source is unusable for our pipeline on two independent grounds. (1) It is CC BY-NC-SA 4.0 \u2014 the NonCommercial term (\"You may not use the material for commercial purposes\") blocks use in a commercial training dataset, and ShareAlike would force any derived dataset to be released under CC BY-NC-SA 4.0. Note this differs from most OpenStax titles (e.g. Chemistry 2e = plain CC BY); do not assume the OpenStax-wide default. (2) DECISIVE: OpenStax layers an explicit, separate prohibition on the book pages: content \"may not be used in the training of large language models or otherwise be ingested into large language models or generative AI offerings without OpenStax's permission.\" This directly targets our exact use case (ML ingestion), so ML training use = NO regardless of the CC terms. Redistribution is marked \"unclear\" because, while CC BY-NC-SA nominally permits non-commercial redistribution with attribution + share-alike, redistributing this content as/within an ML training corpus is precisely what the AI clause forbids without permission; for a commercial ML dataset it is effectively prohibited. There is an unresolved legal question of whether a licensor can enforce restrictions beyond the granted CC license (CC 4.0 bars imposing additional legal terms on downstream recipients), but for compliance purposes the safe and correct reading is that OpenStax has NOT granted AI-training rights and would need to be asked. Path to use if desired: OpenStax offers a Content Reuse Request Form / permission process \u2014 obtain explicit written permission before any ingestion. Sources fetched: https://openstax.org/books/organic-chemistry/pages/1-why-this-chapter (license footer + AI clause), https://openstax.org/books/organic-chemistry/pages/dedication-and-preface (CC BY-NC-SA 4.0 statement), https://help.openstax.org/s/article/Commercial-use-under-the-Creative-Commons-License (NonCommercial confirmation). The three candidate URLs I was given were unusable: /pages/1-introduction returned HTTP 404, and /license + /faq are JS-rendered SPAs that returned only \"OpenStax\" to a static fetch; I located the governing text via web search and the alternative book pages above."
+    },
+    {
+      "source": "oMeBench (Silver/Gold/Template) \u2014 GitHub repo github.com/skylarkie/oMeBench",
+      "license_spdx": "MIT",
+      "permits_ml_use": "yes",
+      "permits_redistribution": "yes",
+      "permits_commercial": "yes",
+      "obligations": [
+        "attribution: include the MIT copyright notice and permission notice in all copies or substantial portions"
+      ],
+      "verbatim_clause": "MIT License\n\nCopyright (c) 2025 Anonymous Authors\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.",
+      "clause_url": "https://raw.githubusercontent.com/skylarkie/oMeBench/main/LICENSE",
+      "confidence": "medium",
+      "notes": "The repo's LICENSE is the standard MIT License (verified verbatim from the raw file). MIT permits use, modification, redistribution, sublicensing, and commercial/sale use, with the sole obligation to retain the copyright + permission notice (attribution). No share-alike/copyleft and no non-commercial (NC) restriction. This clearly covers ML training, redistribution of derived data, and commercial use.\n\nCAVEATS (why confidence is medium, not high):\n1) Scope ambiguity: MIT is a software license and is the ONLY license in the repo. There is NO separate data license or terms-of-use file. The data files (data/oMe_Gold.json, oMe_Template.json, oMe_Silver.jsonl) sit under the same repo the MIT LICENSE governs, so the reasonable reading is that MIT covers the data too \u2014 but the authors never explicitly state that the DATA (as opposed to code) is MIT-licensed. MIT applied to datasets is legally somewhat unconventional.\n2) Anonymous/preliminary state: copyright line reads \"Copyright (c) 2025 Anonymous Authors\" and the README says \"Citation metadata is intentionally omitted for anonymous review.\" The repo is in a peer-review anonymization state; license/attribution details could change upon de-anonymization/publication. To comply with the notice requirement, the attribution string is currently \"Anonymous Authors\".\n3) Upstream provenance risk: the paper (arXiv:2510.07731) states the data was curated from \"publicly available textbooks, peer-reviewed publications, and open-access reaction databases\" in \"full compliance with relevant legal and ethical standards.\" The authors' MIT grant cannot override any third-party rights in those upstream sources; factual chemical data (SMILES, reaction steps) is generally not copyrightable, but curated selections/rationales could carry some upstream claims. Not a blocker but worth flagging for a Tier A source.\n4) No Hugging Face dataset mirror found; GitHub repo is the sole authoritative distribution, and its README gives no additional data terms. URLs checked: github.com/skylarkie/oMeBench (200, MIT badge + LICENSE), raw LICENSE (200, full MIT text), README (200, no separate data-license section), arXiv:2510.07731 (no named license, provenance statement only).\n\nBOTTOM LINE: Ingest/redistribution for ML training including commercial use is permitted under MIT; only obligation is to carry the MIT copyright + permission notice. Recommend preserving the LICENSE text with the dataset and re-checking after the paper de-anonymizes in case terms are updated."
+    },
+    {
+      "source": "PMechDB (Public Database of Elementary Polar Reaction Steps), Baldi Research Group, UC Irvine \u2014 dataset download portal at deeprxn.ics.uci.edu/pmechdb",
+      "license_spdx": "CC-BY-NC-ND-4.0",
+      "permits_ml_use": "unclear",
+      "permits_redistribution": "no",
+      "permits_commercial": "no",
+      "obligations": [
+        "attribution (proper reference to source/paper)",
+        "non-commercial-only (NC)",
+        "no-derivatives (ND) \u2014 only unmodified data may be redistributed",
+        "click-through license agreement required to download",
+        "cite-paper (Tavakoli et al., J. Chem. Inf. Model. 2024, doi:10.1021/acs.jcim.3c01810)"
+      ],
+      "verbatim_clause": "The data is released under the CC-BY-NC-ND license. Under this license users may download and distribute the unmodified data (with proper reference), but may not use it commercially. [Download consent checkbox:] By checking this box, you agree to the terms and conditions of the license (CC-BY-NC-ND).",
+      "clause_url": "https://deeprxn.ics.uci.edu/pmechdb/download",
+      "confidence": "high",
+      "notes": "GOVERNING LICENSE FOR THE DATA = CC-BY-NC-ND 4.0. Verbatim clause captured directly from the official download page HTML (deeprxn.ics.uci.edu/pmechdb/download), which links to https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode and gates every download behind a mandatory click-through agreement to those terms. Confidence is high because this is the data-provider's own explicit, machine-verified statement (not inference).\n\nIMPACT ON OUR INGEST+REDISTRIBUTE PIPELINE \u2014 this source is NOT usable for a redistributable/commercial ML training dataset:\n(a) Commercial use: PROHIBITED. NC clause: \"may not use it commercially.\" An ML training dataset intended for or usable in commercial products violates this.\n(b) Redistribution of DERIVED data: PROHIBITED. The ND (NoDerivatives) term plus the explicit wording only permits distributing the \"unmodified data.\" Ingesting into a training corpus, reformatting, canonicalizing, filtering, tokenizing, or bundling it into a derived training dataset produces an adaptation whose distribution ND forbids. Only verbatim, unmodified redistribution with attribution, for non-commercial purposes, is allowed.\n(c) ML training use: marked UNCLEAR because CC licenses do not explicitly address model training, and there is genuine unsettled legal debate about whether training constitutes creating a derivative. However, for OUR stated purpose (redistribute derived data + commercial pathway), the ND and NC terms clearly block it. Non-commercial, internal-only research training with no redistribution of any adaptation might be arguable, but should get legal review.\n\nIMPORTANT DISTINCTIONS / CORRECTIONS:\n1. Paper vs. data: The associated publication (JCIM 2024 / the NAR-family academic article) is CC-BY-4.0 (\u00a9 The Authors, ACS), which permits commercial reuse and derivatives with attribution. That CC-BY-4.0 covers ONLY the article text, NOT the dataset. Do not conflate them \u2014 the dataset is the more restrictive CC-BY-NC-ND-4.0. A generic web search initially surfaced the paper's CC-BY-4.0 and would mislead; the data terms are stricter.\n2. Domain: Candidate URL host \"deeprxn.igb.uci.edu\" 404s / is stale; the live portal is \"deeprxn.ics.uci.edu\". \"chemdb.igb.uci.edu\" has an expired TLS certificate (could not fetch). The pmechdb landing/documentation pages carry only \"\u00a9 2023 Baldi Research Group\" and soft \"we encourage the community to use\" language with no formal terms \u2014 the ONLY formal license statement lives on the /download page.\n3. GitHub: The candidate repo github.com/moozzz/PMechDB DOES NOT EXIST (GitHub REST API returns HTTP 404 \"Not Found\" for both the repo and its /license endpoint). No alternate authoritative code/data repo license was found there.\n\nRECOMMENDATION: Treat as NON-INGESTIBLE for a redistributable and/or commercial ML training dataset under its stated terms. If PMechDB is still desired, seek explicit written permission/relicensing from the Baldi Research Group (contact pfbaldi@uci.edu) before ingestion."
+    },
+    {
+      "source": "Wikipedia named reactions (Tier C) \u2014 encyclopedia article text",
+      "license_spdx": "CC-BY-SA-4.0",
+      "permits_ml_use": "yes",
+      "permits_redistribution": "yes",
+      "permits_commercial": "yes",
+      "obligations": [
+        "attribution",
+        "share-alike",
+        "indicate-changes"
+      ],
+      "verbatim_clause": "From Wikipedia:Copyrights: \"Wikipedia content can be copied, modified, and redistributed if and only if the copied version is made available on the same terms ... and a link is provided back to the article.\" The text is \"licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA)\" and \"the GNU Free Documentation License (GFDL) (unversioned, with no invariant sections, front-cover texts, or back-cover texts).\" Reuse conditions require you to \"provide credit to the authors either by including a) a hyperlink (where possible) or URL to the page or pages you are re-using,\" to license derivatives \"under the Creative Commons Attribution-ShareAlike 4.0 International License or later,\" and to \"indicate in a reasonable fashion that the original work has been modified.\" Wikimedia Terms of Use \u00a77: contributors agree to license copyrighted text under \"Creative Commons Attribution-ShareAlike 4.0 International License ('CC BY-SA 4.0'), and ... GNU Free Documentation License ('GFDL'),\" and \"Reusers may comply with either license or both.\"",
+      "clause_url": "https://en.wikipedia.org/wiki/Wikipedia:Copyrights ; https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
+      "confidence": "high",
+      "notes": "Both candidate URLs resolved (no 404/redirect). Wikipedia article text \u2014 including named-reaction articles \u2014 is dual-licensed CC BY-SA 4.0 AND GFDL; reusers may comply with either or both. For a practical ML pipeline, CC-BY-SA-4.0 is the governing license to plan around (SPDX: CC-BY-SA-4.0; the GFDL alternative is impractical for data reuse). NOT non-commercial \u2014 commercial use and ML training are permitted with no field-of-use restriction. KEY RISK: CC BY-SA 4.0 is COPYLEFT (share-alike). If redistributed article text (or adaptations of it) is included in a training dataset that is itself distributed, the share-alike obligation plausibly attaches, requiring the redistributed text/derivative to be licensed under CC BY-SA 4.0 (or later). Whether trained MODEL WEIGHTS constitute a \"derivative work\" triggering share-alike is legally unsettled and out of scope here \u2014 but the raw/derived TEXT you redistribute clearly must carry CC BY-SA 4.0. Obligations for any redistribution: (1) attribution \u2014 credit authors via hyperlink/URL back to each article; (2) share-alike \u2014 license copies/adaptations under CC BY-SA 4.0 or later; (3) indicate modifications. Note: this covers TEXT only. Media/images embedded in articles carry their own separate licenses (varied: CC BY-SA, CC BY, PD, fair-use) and must be evaluated individually \u2014 do not assume article-text license extends to images. Facts/data themselves (e.g., reaction names) are not copyrightable, but the prose expression is."
+    },
+    {
+      "source": "Chem LibreTexts (chem.libretexts.org) \u2014 LibreTexts, Inc. open chemistry courseware",
+      "license_spdx": "CC-BY-NC-SA-4.0",
+      "permits_ml_use": "yes",
+      "permits_redistribution": "yes",
+      "permits_commercial": "no",
+      "obligations": [
+        "attribution",
+        "share-alike (copyleft: derivatives must be CC-BY-NC-SA)",
+        "non-commercial-only",
+        "per-page license verification required (licensing varies per item)"
+      ],
+      "verbatim_clause": "Per-page governing footer (default across Chem LibreTexts): \"[Page title] is shared under a CC BY-NC-SA 4.0 license and was authored, remixed, and/or curated by LibreTexts.\" || Terms & Conditions (https://libretexts.org/terms-conditions): \"LibreTexts only includes materials that are covered by open copyrights including Creative Commons, Public Domain, GNU GPL and similar.\" ... \"Each of these is governed by the conditions of the open copyright used which is usually found at the top of every page.\" ... \"Content can be downloaded or copied consistent with the licensing of the material.\" ... \"you are responsible for following all conditions consistent with the licensing of the material on your system.\"",
+      "clause_url": "https://libretexts.org/terms-conditions (site-wide terms); per-page footer confirmed e.g. https://chem.libretexts.org/Courses/Howard_University/General_Chemistry:_An_Atoms_First_Approach/Preface/Creative_Commons_Copyright_and_the_Source_of_this_Book",
+      "confidence": "medium",
+      "notes": "ANSWER FOR THIS PIPELINE (ingest + redistribute data for an ML training dataset): (a) ML training use = permitted ONLY if non-commercial; (b) redistribution of derived data = permitted BUT any derived dataset must itself be licensed CC BY-NC-SA (copyleft/share-alike) AND carry attribution AND stay non-commercial; (c) commercial use = NOT permitted (NC clause). If the training dataset or the resulting model is commercial, this source is NOT usable under its default license. NOTE on ML use: 'yes' is conditional on non-commercial \u2014 a commercial training run is not permitted. LICENSING IS PER-ITEM, not blanket: LibreTexts Terms & Conditions explicitly defer to the license marked at the top/footer of each page. The PREDOMINANT DEFAULT for Chem LibreTexts is CC BY-NC-SA 4.0 (confirmed via standard page footers, Wikipedia, and example books) = NON-COMMERCIAL + SHARE-ALIKE + ATTRIBUTION. CAVEATS (why confidence is medium, not high): (1) licensing varies per page \u2014 some carry CC BY-NC-SA 3.0, CK-12, GNU GPL, or public domain, and some are marked 'not declared license' (no reuse grant; treat as all-rights-reserved and do NOT ingest); (2) trademarks/logos are reserved by LibreTexts and require permission; (3) originally-suggested URL https://libretexts.org/policies/terms.html returns HTTP 404 and https://commons.libretexts.org/ has no license text \u2014 current terms live at https://libretexts.org/terms-conditions. RECOMMENDATION: enforce per-page license extraction from the footer at ingestion time, exclude 'not declared' and incompatible pages, and honor NC + SA + attribution. Do NOT treat this source as commercially usable."
+    }
+  ],
+  "verdicts": [
+    {
+      "source": "Open Reaction Database (ORD) \u2014 ~2M reactions incl. USPTO (Tier B)",
+      "verdict": "USABLE",
+      "one_line_reason": "CC-BY-SA-4.0 clearly permits ML use and redistribution (incl. commercial); ingest as USABLE while recording attribution and enforcing the share-alike/copyleft duty on derived datasets."
+    },
+    {
+      "source": "USPTO (Lowe) \u2014 \"Chemical reactions from US patents (1976-Sep2016)\" by Daniel Lowe, figshare DOI 10.6084/m9.figshare.5104873.v1",
+      "verdict": "USABLE",
+      "one_line_reason": "CC0-1.0 public-domain dedication permits ML use, redistribution, and commercial use with no legally binding obligations (citation is courtesy only)."
+    },
+    {
+      "source": "RMechDB (Baldi Research Group, UC Irvine) \u2014 deeprxn.igb.uci.edu/rmechdb",
+      "verdict": "QUARANTINE",
+      "one_line_reason": "CC-BY-NC-ND (not plain CC-BY-NC): the ND clause bars the derivative/reformatted redistribution a training corpus requires and ML use is unclear, so it fails the \"clearly permits ML use AND redistribution\" test \u2014 the NC-only research carve-out doesn't apply, needs human decision."
+    },
+    {
+      "source": "Wikipedia named reactions (Tier C) \u2014 encyclopedia article text",
+      "verdict": "USABLE",
+      "one_line_reason": "CC-BY-SA-4.0 clearly permits ML use, redistribution, and commercial use (not non-commercial); ingest as USABLE while recording attribution, share-alike, and indicate-changes duties (text only; embedded media need separate review)."
+    },
+    {
+      "source": "OpenStax Organic Chemistry (Tier C) \u2014 CC-BY-NC-SA-4.0, McMurry, OpenStax/Rice University",
+      "verdict": "QUARANTINE",
+      "one_line_reason": "Explicit no-LLM-training/ingestion clause means ML use is not permitted, and redistribution is unclear; both fail the \"clearly permits ML use AND redistribution\" bar, and OpenStax permission is a human decision."
+    },
+    {
+      "source": "PMechDB (Public Database of Elementary Polar Reaction Steps), Baldi Research Group, UC Irvine \u2014 deeprxn.ics.uci.edu/pmechdb",
+      "verdict": "QUARANTINE",
+      "one_line_reason": "Dataset is CC-BY-NC-ND-4.0: the NoDerivatives term forbids redistributing a derived training corpus and ML-training use is unclear, so it fails the \"clearly permits ML use AND redistribution\" bar and needs human/legal review (relicensing from the Baldi group)."
+    },
+    {
+      "source": "Chem LibreTexts (chem.libretexts.org) \u2014 CC-BY-NC-SA-4.0 default",
+      "verdict": "USABLE_FOR_RESEARCH_ONLY",
+      "one_line_reason": "CC-BY-NC-SA-4.0 permits ML use and redistribution but is non-commercial (plus share-alike + attribution), so it maps to research-only: flag in the data card, keep separable, and never mix into a commercial release; also enforce per-page license extraction and quarantine any \"not declared\"/incompatible pages at ingest."
+    },
+    {
+      "source": "oMeBench (Silver/Gold/Template) \u2014 GitHub repo github.com/skylarkie/oMeBench",
+      "verdict": "USABLE",
+      "one_line_reason": "Verbatim-verified MIT license clearly permits ML use, redistribution, and commercial use; only duty is retaining the MIT copyright+permission notice (attribution \"Anonymous Authors\"), with data-card flags to preserve LICENSE and re-check after de-anonymization."
+    }
+  ]
+}
