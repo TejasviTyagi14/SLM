@@ -36,14 +36,14 @@ sources:
   ome_silver:   {enabled: true,  tier: A, verdict: usable,     license: "MIT"}   # this repo
   ome_template: {enabled: true,  tier: A, verdict: usable,     license: "MIT"}   # this repo
   # ---- TIER B: overall reactions (supporting) ----
-  ord:          {enabled: true,  tier: B, verdict: usable,     license: "CC-BY-SA-4.0"}  # share-alike
-  uspto_lowe:   {enabled: true,  tier: B, verdict: usable,     license: "CC0-1.0"}       # public domain
+  ord:          {enabled: true,  tier: B, verdict: usable,     license: "CC-BY-SA-4.0", max_shards: 2}   # share-alike; bounded sample
+  uspto_lowe:   {enabled: true,  tier: B, verdict: usable,     license: "CC0-1.0", max_rows: 20000}      # public domain; bounded sample
   # ---- TIER C: open textbooks & named reactions (prose + name->structure) ----
   # OpenStax explicitly prohibits AI training/ingestion -> QUARANTINE.
   openstax:     {enabled: false, tier: C, verdict: quarantine, license: "CC-BY-NC-SA-4.0+no-AI"}
   # LibreTexts is CC-BY-NC-SA: usable but NON-COMMERCIAL -> research-only, kept separable.
   libretexts:   {enabled: false, tier: C, verdict: usable_for_research_only, license: "CC-BY-NC-SA-4.0"}
-  wikipedia:    {enabled: true,  tier: C, verdict: usable,     license: "CC-BY-SA-4.0"}  # share-alike
+  wikipedia:    {enabled: true,  tier: C, verdict: usable,     license: "CC-BY-SA-4.0", max_articles: 60}  # share-alike; bounded sample
 
 # Politeness for any HTTP fetching. Prefer official bulk dumps/APIs over scraping.
 http:
