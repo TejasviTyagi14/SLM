@@ -18,3 +18,7 @@ third_party/oMeBench/
 *.egg-info/
 build/
 dist/
+
+# Phase 8 generated corpora (regenerable via `make phase8`); keep data card + reports.
+data/final/*.jsonl
+data/final/pretrain_corpus.txt
