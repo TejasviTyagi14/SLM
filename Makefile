@@ -5,9 +5,9 @@ PY := .venv/bin/python
 PIP := .venv/bin/pip
 export PYTHONPATH := src
 
-.PHONY: all setup deps clone-omebench ontology phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 test lint clean eval-format-check
+.PHONY: all setup deps clone-omebench ontology phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 test lint clean eval-format-check
 
-all: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 ## (phase 9 appended as it lands)
+all: phase1 phase2 phase3 phase4 phase5 phase6 phase7 phase8 phase9 ## full pipeline
 
 setup: .venv deps clone-omebench ## create venv, install deps, clone oMeBench
 
@@ -52,6 +52,9 @@ phase7: ## Phase 7: near-duplicate deduplication (keep highest provenance)
 
 phase8: ## Phase 8: task formatting (SFT chat views + pretrain corpus)
 	$(PY) -m rxndata.phase8_format --style cot --tokenizer-model Qwen/Qwen2.5-1.5B-Instruct --json-out data/interim/_phase8_gate.json
+
+phase9: ## Phase 9: stratified splits + data card
+	$(PY) -m rxndata.phase9_splits --json-out data/interim/_phase9_gate.json
 
 eval-format-check: ## Verify our gold SFT targets score at ceiling on the real oMeS scorer
 	$(PY) scripts/eval_omebench.py format-check --n 300

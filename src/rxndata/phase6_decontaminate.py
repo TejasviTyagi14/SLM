@@ -84,13 +84,9 @@ def run() -> Dict:
         "removed_by_source": dict(by_source_removed),
         "removed_ids": [r["reaction_id"] for r in removed],
     }
-    report_path = cfg.path("final") / "decontamination_report.json"
-    report_path.parent.mkdir(parents=True, exist_ok=True)
-    with report_path.open("w") as f:
-        json.dump(report, f, indent=2)
-
     # Independent verification: confirm ZERO surviving records match gold by the
-    # exact InChIKey signature (the strongest leak test).
+    # exact InChIKey signature (the strongest leak test). Computed BEFORE writing
+    # so the persisted report includes it.
     from .decontaminate import inchikey_signature
     gold_sigs = {s for s in (inchikey_signature(g.get("reactants_smiles", []),
                                                 g.get("products_smiles", []))
@@ -99,6 +95,11 @@ def run() -> Dict:
                 if inchikey_signature(r.get("reactants_smiles", []),
                                       r.get("products_smiles", [])) in gold_sigs)
     report["post_check_gold_inchikey_leaks"] = leaks
+
+    report_path = cfg.path("final") / "decontamination_report.json"
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    with report_path.open("w") as f:
+        json.dump(report, f, indent=2)
 
     return {
         **report,
