@@ -85,6 +85,8 @@ mechanism:
 atommap:
   backend: rxnmapper
   min_confidence: 0.30             # below this -> quarantine the mapping (Phase 4)
+  map_steps: true                  # map each elementary step intermediate_{n-1}>>intermediate_{n}
+  gate_sample: 200                 # records mapped for the gate histogram (0 = full)
 
 validation:
   # Phase 5 gates. A record failing any of these goes to data/rejects/ with a code.
