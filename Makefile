@@ -5,9 +5,9 @@ PY := .venv/bin/python
 PIP := .venv/bin/pip
 export PYTHONPATH := src
 
-.PHONY: all setup deps clone-omebench ontology phase1 phase2 phase3 phase4 phase5 test lint clean
+.PHONY: all setup deps clone-omebench ontology phase1 phase2 phase3 phase4 phase5 phase6 test lint clean
 
-all: phase1 phase2 phase3 phase4 phase5 ## (phases 6-9 appended as they land)
+all: phase1 phase2 phase3 phase4 phase5 phase6 ## (phases 7-9 appended as they land)
 
 setup: .venv deps clone-omebench ## create venv, install deps, clone oMeBench
 
@@ -43,6 +43,9 @@ phase4: ## Phase 4: atom mapping (RXNMapper). SAMPLE=0 maps everything (slow).
 
 phase5: ## Phase 5: validation gates (sanitize/valence/balance/continuity/no-op)
 	$(PY) -m rxndata.phase5_validate --json-out data/interim/_phase5_gate.json
+
+phase6: ## Phase 6: benchmark decontamination vs oMe-Gold + Template
+	$(PY) -m rxndata.phase6_decontaminate --json-out data/interim/_phase6_gate.json
 
 test: ## run the pytest suite (schema, validators, ingest smoke)
 	$(PY) -m pytest tests/ -q

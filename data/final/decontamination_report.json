@@ -1,0 +1,26 @@
+{
+  "blacklist_source": [
+    "oMe-Gold",
+    "oMe-Template"
+  ],
+  "blacklist_entries": 363,
+  "tanimoto_threshold": 0.95,
+  "candidates_in": 2380,
+  "kept": 2373,
+  "removed": 7,
+  "removed_by_reason": {
+    "reaction_fp_tanimoto>=0.95": 7
+  },
+  "removed_by_source": {
+    "oMe-Silver": 7
+  },
+  "removed_ids": [
+    "SILVER-NR-125_1-c1ccc(F)cc1",
+    "SILVER-NR-133_1-c1ccc(-c2ccccc2)cc1_2-c1ccc(F)cc1",
+    "SILVER-NR-133_1-c1ccc(-c2ccccc2)cc1_2-c1ccc(Oc2ccccc2)cc1",
+    "SILVER-NR-133_1-c1ccc(C#N)cc1_2-c1ccc(Oc2ccccc2)cc1",
+    "SILVER-NR-133_1-c1ccc(C#N)cc1_2-c1ccc(S(=O)(=O)N(C)C)cc1",
+    "SILVER-NR-133_1-c1ccc(OC)cc1_2-c1ccc(F)cc1",
+    "SILVER-NR-305_1-c2ccc(OC)cc2_2-c2ccc(N(C)C)cc2"
+  ]
+}
