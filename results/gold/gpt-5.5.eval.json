@@ -1,0 +1,1605 @@
+{
+  "summary": {
+    "model": "gpt-5.5",
+    "dataset": "gold",
+    "evaluated_reactions": 196,
+    "successful_evaluations": 196,
+    "avg_S_total": 0.42,
+    "avg_S_partial": 0.469,
+    "avg_V": 0.99,
+    "avg_L": 0.643,
+    "by_level": {
+      "easy": {
+        "n": 35,
+        "S_partial": 22.630000000000003,
+        "S_total": 19.76,
+        "avg_S_partial": 0.647,
+        "avg_S_total": 0.565
+      },
+      "medium": {
+        "n": 138,
+        "S_partial": 63.019999999999996,
+        "S_total": 57.650000000000006,
+        "avg_S_partial": 0.457,
+        "avg_S_total": 0.418
+      },
+      "hard": {
+        "n": 23,
+        "S_partial": 6.259999999999999,
+        "S_total": 4.83,
+        "avg_S_partial": 0.272,
+        "avg_S_total": 0.21
+      }
+    }
+  },
+  "per_reaction": [
+    {
+      "reaction_id": "NR-001",
+      "level": "easy",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-002",
+      "level": "easy",
+      "S_total": 0.84,
+      "S_partial": 0.84,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-003",
+      "level": "medium",
+      "S_total": 0.41,
+      "S_partial": 0.41,
+      "V": 1.0,
+      "L": 0.71
+    },
+    {
+      "reaction_id": "NG-004",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NG-005",
+      "level": "easy",
+      "S_total": 0.45,
+      "S_partial": 0.45,
+      "V": 1.0,
+      "L": 0.71
+    },
+    {
+      "reaction_id": "NG-006",
+      "level": "easy",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 0.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NG-007",
+      "level": "medium",
+      "S_total": 0.34,
+      "S_partial": 0.34,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NG-008",
+      "level": "easy",
+      "S_total": 0.72,
+      "S_partial": 0.72,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NR-009",
+      "level": "medium",
+      "S_total": 0.62,
+      "S_partial": 0.62,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NG-010",
+      "level": "medium",
+      "S_total": 0.42,
+      "S_partial": 0.42,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NG-011",
+      "level": "medium",
+      "S_total": 0.83,
+      "S_partial": 0.91,
+      "V": 1.0,
+      "L": 0.88
+    },
+    {
+      "reaction_id": "NG-012",
+      "level": "hard",
+      "S_total": 0.13,
+      "S_partial": 0.13,
+      "V": 1.0,
+      "L": 0.25
+    },
+    {
+      "reaction_id": "NR-014",
+      "level": "hard",
+      "S_total": 0.48,
+      "S_partial": 0.48,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NR-016",
+      "level": "medium",
+      "S_total": 0.33,
+      "S_partial": 0.64,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-017",
+      "level": "medium",
+      "S_total": 0.4,
+      "S_partial": 0.4,
+      "V": 1.0,
+      "L": 0.33
+    },
+    {
+      "reaction_id": "NR-019",
+      "level": "easy",
+      "S_total": 0.46,
+      "S_partial": 0.46,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-020",
+      "level": "medium",
+      "S_total": 0.09,
+      "S_partial": 0.31,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-022",
+      "level": "medium",
+      "S_total": 0.67,
+      "S_partial": 0.67,
+      "V": 1.0,
+      "L": 0.8
+    },
+    {
+      "reaction_id": "NR-023",
+      "level": "medium",
+      "S_total": 0.66,
+      "S_partial": 0.66,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-021",
+      "level": "easy",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-025",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.09,
+      "V": 1.0,
+      "L": 0.25
+    },
+    {
+      "reaction_id": "NR-026",
+      "level": "medium",
+      "S_total": 0.49,
+      "S_partial": 0.49,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-027",
+      "level": "medium",
+      "S_total": 0.12,
+      "S_partial": 0.12,
+      "V": 1.0,
+      "L": 0.25
+    },
+    {
+      "reaction_id": "NR-028",
+      "level": "hard",
+      "S_total": 0.0,
+      "S_partial": 0.19,
+      "V": 1.0,
+      "L": 0.4
+    },
+    {
+      "reaction_id": "NR-029",
+      "level": "medium",
+      "S_total": 0.17,
+      "S_partial": 0.17,
+      "V": 1.0,
+      "L": 0.38
+    },
+    {
+      "reaction_id": "NR-031",
+      "level": "easy",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-032",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-033",
+      "level": "medium",
+      "S_total": 0.74,
+      "S_partial": 0.74,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-034",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-035",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.14,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-036",
+      "level": "medium",
+      "S_total": 0.1,
+      "S_partial": 0.1,
+      "V": 1.0,
+      "L": 0.4
+    },
+    {
+      "reaction_id": "NR-037",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-038",
+      "level": "easy",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-039",
+      "level": "easy",
+      "S_total": 0.75,
+      "S_partial": 0.75,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-041",
+      "level": "easy",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-042",
+      "level": "easy",
+      "S_total": 0.87,
+      "S_partial": 0.87,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-043",
+      "level": "hard",
+      "S_total": 0.32,
+      "S_partial": 0.32,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-044",
+      "level": "easy",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-045",
+      "level": "easy",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-046",
+      "level": "medium",
+      "S_total": 0.56,
+      "S_partial": 0.56,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-047",
+      "level": "medium",
+      "S_total": 0.21,
+      "S_partial": 0.21,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NR-048",
+      "level": "medium",
+      "S_total": 0.18,
+      "S_partial": 0.18,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-049",
+      "level": "easy",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-052",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-053",
+      "level": "easy",
+      "S_total": 0.61,
+      "S_partial": 0.89,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-054",
+      "level": "medium",
+      "S_total": 0.2,
+      "S_partial": 0.2,
+      "V": 1.0,
+      "L": 0.4
+    },
+    {
+      "reaction_id": "NR-055",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-056",
+      "level": "hard",
+      "S_total": 0.04,
+      "S_partial": 0.04,
+      "V": 1.0,
+      "L": 0.4
+    },
+    {
+      "reaction_id": "NR-057",
+      "level": "easy",
+      "S_total": 0.84,
+      "S_partial": 0.84,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-058",
+      "level": "medium",
+      "S_total": 0.76,
+      "S_partial": 0.76,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NR-059",
+      "level": "medium",
+      "S_total": 0.17,
+      "S_partial": 0.17,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-060",
+      "level": "easy",
+      "S_total": 0.32,
+      "S_partial": 0.42,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-061",
+      "level": "easy",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-062",
+      "level": "easy",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-063",
+      "level": "medium",
+      "S_total": 0.44,
+      "S_partial": 0.44,
+      "V": 1.0,
+      "L": 0.43
+    },
+    {
+      "reaction_id": "NR-064",
+      "level": "medium",
+      "S_total": 0.08,
+      "S_partial": 0.08,
+      "V": 1.0,
+      "L": 0.44
+    },
+    {
+      "reaction_id": "NR-065",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-066",
+      "level": "hard",
+      "S_total": 0.17,
+      "S_partial": 0.17,
+      "V": 1.0,
+      "L": 0.17
+    },
+    {
+      "reaction_id": "NR-067",
+      "level": "medium",
+      "S_total": 0.76,
+      "S_partial": 0.76,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-069",
+      "level": "medium",
+      "S_total": 0.58,
+      "S_partial": 0.58,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-070",
+      "level": "medium",
+      "S_total": 0.74,
+      "S_partial": 0.9,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-071",
+      "level": "hard",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-072",
+      "level": "medium",
+      "S_total": 0.08,
+      "S_partial": 0.08,
+      "V": 1.0,
+      "L": 0.8
+    },
+    {
+      "reaction_id": "NR-073",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-074",
+      "level": "medium",
+      "S_total": 0.56,
+      "S_partial": 0.56,
+      "V": 1.0,
+      "L": 0.6
+    },
+    {
+      "reaction_id": "NR-075",
+      "level": "medium",
+      "S_total": 0.17,
+      "S_partial": 0.24,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-000",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-100",
+      "level": "medium",
+      "S_total": 0.17,
+      "S_partial": 0.2,
+      "V": 1.0,
+      "L": 0.6
+    },
+    {
+      "reaction_id": "NR-101",
+      "level": "medium",
+      "S_total": 0.33,
+      "S_partial": 0.33,
+      "V": 1.0,
+      "L": 0.33
+    },
+    {
+      "reaction_id": "NR-102",
+      "level": "medium",
+      "S_total": 0.33,
+      "S_partial": 0.55,
+      "V": 1.0,
+      "L": 0.6
+    },
+    {
+      "reaction_id": "NR-103",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-104",
+      "level": "medium",
+      "S_total": 0.69,
+      "S_partial": 0.69,
+      "V": 1.0,
+      "L": 0.8
+    },
+    {
+      "reaction_id": "NR-105",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.33
+    },
+    {
+      "reaction_id": "NR-106",
+      "level": "medium",
+      "S_total": 0.77,
+      "S_partial": 0.77,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-107",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-108",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.3,
+      "V": 1.0,
+      "L": 0.33
+    },
+    {
+      "reaction_id": "NR-109",
+      "level": "medium",
+      "S_total": 0.36,
+      "S_partial": 0.36,
+      "V": 1.0,
+      "L": 0.43
+    },
+    {
+      "reaction_id": "NR-110",
+      "level": "medium",
+      "S_total": 0.58,
+      "S_partial": 0.58,
+      "V": 0.75,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-111",
+      "level": "medium",
+      "S_total": 0.14,
+      "S_partial": 0.38,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NR-112",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.25
+    },
+    {
+      "reaction_id": "NR-113",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-114",
+      "level": "medium",
+      "S_total": 0.83,
+      "S_partial": 0.83,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NR-115",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-116",
+      "level": "medium",
+      "S_total": 0.08,
+      "S_partial": 0.08,
+      "V": 1.0,
+      "L": 0.6
+    },
+    {
+      "reaction_id": "NR-117",
+      "level": "medium",
+      "S_total": 0.13,
+      "S_partial": 0.13,
+      "V": 1.0,
+      "L": 0.33
+    },
+    {
+      "reaction_id": "NR-118",
+      "level": "medium",
+      "S_total": 0.84,
+      "S_partial": 0.84,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-119",
+      "level": "medium",
+      "S_total": 0.06,
+      "S_partial": 0.06,
+      "V": 1.0,
+      "L": 0.11
+    },
+    {
+      "reaction_id": "NR-120",
+      "level": "medium",
+      "S_total": 0.55,
+      "S_partial": 0.55,
+      "V": 1.0,
+      "L": 0.6
+    },
+    {
+      "reaction_id": "NR-122",
+      "level": "medium",
+      "S_total": 0.34,
+      "S_partial": 0.34,
+      "V": 1.0,
+      "L": 0.6
+    },
+    {
+      "reaction_id": "NR-123",
+      "level": "medium",
+      "S_total": 0.16,
+      "S_partial": 0.3,
+      "V": 1.0,
+      "L": 0.57
+    },
+    {
+      "reaction_id": "NR-124",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-125",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-126",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.73,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-127",
+      "level": "medium",
+      "S_total": 0.56,
+      "S_partial": 0.56,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-128",
+      "level": "medium",
+      "S_total": 0.87,
+      "S_partial": 0.87,
+      "V": 1.0,
+      "L": 0.8
+    },
+    {
+      "reaction_id": "NR-129",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-130",
+      "level": "medium",
+      "S_total": 0.25,
+      "S_partial": 0.25,
+      "V": 1.0,
+      "L": 0.25
+    },
+    {
+      "reaction_id": "NR-131",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.34,
+      "V": 0.75,
+      "L": 0.25
+    },
+    {
+      "reaction_id": "NR-133",
+      "level": "medium",
+      "S_total": 0.74,
+      "S_partial": 0.74,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-134",
+      "level": "medium",
+      "S_total": 0.17,
+      "S_partial": 0.17,
+      "V": 1.0,
+      "L": 0.2
+    },
+    {
+      "reaction_id": "NR-135",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-136",
+      "level": "medium",
+      "S_total": 0.63,
+      "S_partial": 0.63,
+      "V": 1.0,
+      "L": 0.62
+    },
+    {
+      "reaction_id": "NR-137",
+      "level": "medium",
+      "S_total": 0.07,
+      "S_partial": 0.07,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-138",
+      "level": "medium",
+      "S_total": 0.8,
+      "S_partial": 0.8,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NR-139",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-140",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-141",
+      "level": "medium",
+      "S_total": 0.35,
+      "S_partial": 0.88,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-142",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-143",
+      "level": "medium",
+      "S_total": 0.26,
+      "S_partial": 0.48,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-144",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-145",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-146",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-147",
+      "level": "medium",
+      "S_total": 0.24,
+      "S_partial": 0.46,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-148",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 0.75,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-149",
+      "level": "medium",
+      "S_total": 0.78,
+      "S_partial": 0.78,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-231",
+      "level": "medium",
+      "S_total": 0.05,
+      "S_partial": 0.05,
+      "V": 1.0,
+      "L": 0.11
+    },
+    {
+      "reaction_id": "NR-235",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-236",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.21,
+      "V": 1.0,
+      "L": 0.25
+    },
+    {
+      "reaction_id": "NR-237",
+      "level": "medium",
+      "S_total": 0.2,
+      "S_partial": 0.2,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-238",
+      "level": "medium",
+      "S_total": 0.53,
+      "S_partial": 0.67,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NR-239",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-240",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-241",
+      "level": "medium",
+      "S_total": 0.7,
+      "S_partial": 0.7,
+      "V": 0.75,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-242",
+      "level": "hard",
+      "S_total": 0.2,
+      "S_partial": 0.34,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-244",
+      "level": "easy",
+      "S_total": 0.57,
+      "S_partial": 0.8,
+      "V": 1.0,
+      "L": 0.8
+    },
+    {
+      "reaction_id": "NR-245",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.12,
+      "V": 1.0,
+      "L": 0.33
+    },
+    {
+      "reaction_id": "NR-201",
+      "level": "medium",
+      "S_total": 0.18,
+      "S_partial": 0.18,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-202",
+      "level": "medium",
+      "S_total": 0.06,
+      "S_partial": 0.06,
+      "V": 1.0,
+      "L": 0.17
+    },
+    {
+      "reaction_id": "NR-203",
+      "level": "medium",
+      "S_total": 0.42,
+      "S_partial": 0.42,
+      "V": 1.0,
+      "L": 0.71
+    },
+    {
+      "reaction_id": "NR-204",
+      "level": "hard",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.17
+    },
+    {
+      "reaction_id": "NR-205",
+      "level": "easy",
+      "S_total": 0.56,
+      "S_partial": 0.84,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-206",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-207",
+      "level": "medium",
+      "S_total": 0.69,
+      "S_partial": 0.69,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NR-208",
+      "level": "easy",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-209",
+      "level": "medium",
+      "S_total": 0.34,
+      "S_partial": 0.34,
+      "V": 1.0,
+      "L": 0.83
+    },
+    {
+      "reaction_id": "NR-210",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.4
+    },
+    {
+      "reaction_id": "NR-211",
+      "level": "hard",
+      "S_total": 0.0,
+      "S_partial": 0.32,
+      "V": 1.0,
+      "L": 0.6
+    },
+    {
+      "reaction_id": "NR-212",
+      "level": "easy",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-213",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-214",
+      "level": "medium",
+      "S_total": 0.27,
+      "S_partial": 0.27,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-215",
+      "level": "hard",
+      "S_total": 0.0,
+      "S_partial": 0.07,
+      "V": 1.0,
+      "L": 0.17
+    },
+    {
+      "reaction_id": "NR-216",
+      "level": "medium",
+      "S_total": 0.16,
+      "S_partial": 0.16,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-217",
+      "level": "easy",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-218",
+      "level": "medium",
+      "S_total": 0.34,
+      "S_partial": 0.34,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-219",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.15,
+      "V": 1.0,
+      "L": 0.2
+    },
+    {
+      "reaction_id": "NR-220",
+      "level": "hard",
+      "S_total": 0.35,
+      "S_partial": 0.45,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-221",
+      "level": "hard",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-222",
+      "level": "medium",
+      "S_total": 0.18,
+      "S_partial": 0.18,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-223",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-224",
+      "level": "hard",
+      "S_total": 0.16,
+      "S_partial": 0.16,
+      "V": 1.0,
+      "L": 0.86
+    },
+    {
+      "reaction_id": "NR-225",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-226",
+      "level": "medium",
+      "S_total": 0.26,
+      "S_partial": 0.26,
+      "V": 1.0,
+      "L": 0.33
+    },
+    {
+      "reaction_id": "NR-227",
+      "level": "hard",
+      "S_total": 0.13,
+      "S_partial": 0.13,
+      "V": 1.0,
+      "L": 0.2
+    },
+    {
+      "reaction_id": "NR-228",
+      "level": "easy",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.0
+    },
+    {
+      "reaction_id": "NR-229",
+      "level": "medium",
+      "S_total": 0.88,
+      "S_partial": 0.88,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-230",
+      "level": "hard",
+      "S_total": 0.0,
+      "S_partial": 0.21,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-300",
+      "level": "hard",
+      "S_total": 0.43,
+      "S_partial": 0.43,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-301",
+      "level": "medium",
+      "S_total": 0.67,
+      "S_partial": 0.67,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-302",
+      "level": "medium",
+      "S_total": 0.48,
+      "S_partial": 0.48,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-303",
+      "level": "easy",
+      "S_total": 0.32,
+      "S_partial": 0.86,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-304",
+      "level": "medium",
+      "S_total": 0.22,
+      "S_partial": 0.22,
+      "V": 1.0,
+      "L": 0.25
+    },
+    {
+      "reaction_id": "NR-305",
+      "level": "easy",
+      "S_total": 0.0,
+      "S_partial": 0.47,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-306",
+      "level": "medium",
+      "S_total": 0.85,
+      "S_partial": 0.85,
+      "V": 1.0,
+      "L": 0.8
+    },
+    {
+      "reaction_id": "NR-307",
+      "level": "hard",
+      "S_total": 0.29,
+      "S_partial": 0.29,
+      "V": 1.0,
+      "L": 0.3
+    },
+    {
+      "reaction_id": "NR-310",
+      "level": "medium",
+      "S_total": 0.14,
+      "S_partial": 0.14,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-311",
+      "level": "hard",
+      "S_total": 0.0,
+      "S_partial": 0.22,
+      "V": 1.0,
+      "L": 0.25
+    },
+    {
+      "reaction_id": "NR-312",
+      "level": "easy",
+      "S_total": 0.32,
+      "S_partial": 0.32,
+      "V": 1.0,
+      "L": 0.5
+    },
+    {
+      "reaction_id": "NR-313",
+      "level": "easy",
+      "S_total": 0.41,
+      "S_partial": 0.41,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NR-314",
+      "level": "medium",
+      "S_total": 0.48,
+      "S_partial": 0.48,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-316",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.12
+    },
+    {
+      "reaction_id": "NR-317",
+      "level": "medium",
+      "S_total": 0.63,
+      "S_partial": 0.63,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-318",
+      "level": "hard",
+      "S_total": 0.33,
+      "S_partial": 0.47,
+      "V": 1.0,
+      "L": 0.55
+    },
+    {
+      "reaction_id": "NR-319",
+      "level": "medium",
+      "S_total": 0.07,
+      "S_partial": 0.07,
+      "V": 1.0,
+      "L": 0.83
+    },
+    {
+      "reaction_id": "NR-320",
+      "level": "hard",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.38
+    },
+    {
+      "reaction_id": "NR-321",
+      "level": "easy",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-322",
+      "level": "easy",
+      "S_total": 0.09,
+      "S_partial": 0.34,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "NR-323",
+      "level": "easy",
+      "S_total": 0.1,
+      "S_partial": 0.82,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-324",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-325",
+      "level": "medium",
+      "S_total": 0.51,
+      "S_partial": 0.51,
+      "V": 1.0,
+      "L": 0.8
+    },
+    {
+      "reaction_id": "NR-326",
+      "level": "easy",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-327",
+      "level": "medium",
+      "S_total": 0.85,
+      "S_partial": 0.94,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-328",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.0,
+      "V": 1.0,
+      "L": 0.33
+    },
+    {
+      "reaction_id": "NR-329",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-330",
+      "level": "medium",
+      "S_total": 0.0,
+      "S_partial": 0.19,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-331",
+      "level": "easy",
+      "S_total": 0.53,
+      "S_partial": 0.53,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-333",
+      "level": "medium",
+      "S_total": 0.19,
+      "S_partial": 0.19,
+      "V": 1.0,
+      "L": 0.4
+    },
+    {
+      "reaction_id": "NR-334",
+      "level": "medium",
+      "S_total": 0.71,
+      "S_partial": 0.71,
+      "V": 1.0,
+      "L": 0.83
+    },
+    {
+      "reaction_id": "NR-335",
+      "level": "medium",
+      "S_total": 0.45,
+      "S_partial": 0.45,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "NR-336",
+      "level": "medium",
+      "S_total": 0.5,
+      "S_partial": 0.56,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-337",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "NR-338",
+      "level": "medium",
+      "S_total": 0.2,
+      "S_partial": 0.2,
+      "V": 1.0,
+      "L": 0.33
+    },
+    {
+      "reaction_id": "NR-339",
+      "level": "hard",
+      "S_total": 0.75,
+      "S_partial": 0.79,
+      "V": 1.0,
+      "L": 0.75
+    },
+    {
+      "reaction_id": "ART-001",
+      "level": "medium",
+      "S_total": 1.0,
+      "S_partial": 1.0,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "ART-002",
+      "level": "medium",
+      "S_total": 0.16,
+      "S_partial": 0.16,
+      "V": 1.0,
+      "L": 1.0
+    },
+    {
+      "reaction_id": "ART-004",
+      "level": "medium",
+      "S_total": 0.32,
+      "S_partial": 0.69,
+      "V": 1.0,
+      "L": 0.67
+    },
+    {
+      "reaction_id": "ART-005",
+      "level": "hard",
+      "S_total": 0.05,
+      "S_partial": 0.05,
+      "V": 1.0,
+      "L": 0.11
+    }
+  ]
+}

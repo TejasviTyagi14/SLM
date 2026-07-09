@@ -1,0 +1,10 @@
+# Training + local-model evaluation stack (heavier than the base harness).
+# Install into the same venv: pip install -r requirements-train.txt
+torch>=2.4.0
+transformers>=4.55.0
+trl>=0.21.0
+peft>=0.13.0
+accelerate>=1.0.0
+datasets>=3.0.0
+# Optional but strongly recommended for fast GRPO rollouts:
+# vllm>=0.6.0
