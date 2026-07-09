@@ -42,7 +42,7 @@ No paywalled/copyrighted sources are ingested. NC-ND sources (PMechDB, RMechDB) 
 ## Decontamination
 
 - Removed as contaminated vs oMe-Gold+Template: **7**
-- Post-check gold InChIKey leaks: **n/a** (0 required).
+- Post-check gold InChIKey leaks: **0** (0 required).
 
 ## Ontology coverage (step subtype counts)
 

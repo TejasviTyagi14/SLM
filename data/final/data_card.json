@@ -53,7 +53,7 @@
   },
   "decontamination": {
     "removed": 7,
-    "post_check_gold_inchikey_leaks": "n/a"
+    "post_check_gold_inchikey_leaks": 0
   },
   "format_check": {
     "n_checked": 300,

@@ -8,7 +8,7 @@ chemistry -- that is Phase 2/5. It only parses and captures provenance+license.
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from ..config import Config
 

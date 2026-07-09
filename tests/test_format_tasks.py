@@ -4,15 +4,15 @@ from __future__ import annotations
 
 import json
 
+from omebench_eval.scoring import oMeS
+
 from rxndata.format_tasks import (
     SYSTEM_PROMPT,
-    make_forward,
     make_mechanism_full,
     make_next_step,
 )
 from rxndata.ontology import load_ontology
 from rxndata.schema import make_record, make_step
-from omebench_eval.scoring import oMeS
 
 
 def _aldol():

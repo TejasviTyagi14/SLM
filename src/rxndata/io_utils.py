@@ -17,7 +17,6 @@ from urllib.parse import urlparse
 from .config import Config, load_config
 from .schema import records_to_rows
 
-
 # ---- parquet ----------------------------------------------------------------
 
 def write_interim(records: List[Dict[str, Any]], source_name: str, cfg: Optional[Config] = None) -> Path:

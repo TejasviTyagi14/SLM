@@ -22,5 +22,6 @@
     "SILVER-NR-133_1-c1ccc(C#N)cc1_2-c1ccc(S(=O)(=O)N(C)C)cc1",
     "SILVER-NR-133_1-c1ccc(OC)cc1_2-c1ccc(F)cc1",
     "SILVER-NR-305_1-c2ccc(OC)cc2_2-c2ccc(N(C)C)cc2"
-  ]
+  ],
+  "post_check_gold_inchikey_leaks": 0
 }

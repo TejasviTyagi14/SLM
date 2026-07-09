@@ -29,7 +29,6 @@ from typing import Dict, List, Optional, Tuple
 
 from rdkit import Chem, RDLogger
 
-from .config import Config, load_config
 from .ontology import load_ontology
 
 RDLogger.DisableLog("rdApp.*")

@@ -24,7 +24,6 @@ from typing import Dict, List
 
 from .config import load_config
 from .infer import infer_mechanisms
-from .io_utils import read_interim
 from .mechanism import expand_template, type_and_remap
 from .ontology import load_ontology
 from .schema import records_to_rows

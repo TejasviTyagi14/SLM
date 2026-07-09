@@ -26,8 +26,6 @@ from typing import Dict, List, Optional
 
 from rdkit import Chem, RDLogger
 
-from .config import Config, load_config
-
 RDLogger.DisableLog("rdApp.*")
 
 

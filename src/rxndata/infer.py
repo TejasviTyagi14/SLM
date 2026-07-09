@@ -28,7 +28,7 @@ from __future__ import annotations
 
 from typing import Dict, List, Optional
 
-from rdkit import Chem, RDLogger
+from rdkit import RDLogger
 
 from .config import Config, load_config
 

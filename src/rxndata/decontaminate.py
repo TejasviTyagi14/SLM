@@ -16,9 +16,8 @@ data/final/decontamination_report.json.
 from __future__ import annotations
 
 import hashlib
-import json
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Set, Tuple
+from typing import List, Optional, Set
 
 from rdkit import Chem, DataStructs, RDLogger
 from rdkit.Chem import rdMolDescriptors

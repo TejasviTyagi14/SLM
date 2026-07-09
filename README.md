@@ -125,6 +125,41 @@ omebench_eval/
 results/              predictions + eval outputs (gitignored)
 ```
 
+## Dataset construction pipeline (`src/rxndata/`)
+
+A reproducible pipeline that builds a **training-ready mechanism-step dataset**
+optimized for oMeBench/oMeS. The core unit is a typed, balanced elementary
+mechanistic step with a valid intermediate SMILES — not an overall
+transformation. Run it with `make all`; every phase stops at a gate.
+
+```
+make setup            # venv + pinned deps + clone oMeBench into third_party/
+make all              # phases 1-9 -> data/final/
+make eval-format-check # confirm our SFT targets score at ceiling on real oMeS
+make test             # pytest (schema, validators, decon controls, format-check)
+```
+
+| Phase | Module | What | Gate |
+| --- | --- | --- | --- |
+| 0 | `ontology.py` | parse 11 types / 31 subtypes from the benchmark; license findings | ontology + license inventory |
+| 1 | `ingest/` | ingest 5 license-cleared sources → interim parquet | row counts per source |
+| 2 | `normalize.py` | RDKit canonicalization (charge/radical/map-preserving), OPSIN, InChIKey vocab | % sanitized |
+| 3 | `mechanism.py` | typing/remap to ontology, bounded R-group expansion, capped inference | subtype distribution |
+| 4 | `atommap.py` | RXNMapper atom mapping (overall + per-step) | confidence histogram |
+| 5 | `validate.py` | sanitize/valence/balance/continuity(MCS)/no-op gates | pass/reject + reason codes |
+| 6 | `decontaminate.py` | remove oMe-Gold/Template overlap (InChIKey + fp + mech-hash) | **0 gold leaks** |
+| 7 | `dedup.py` | near-duplicate removal, keep highest provenance | cluster sizes |
+| 8 | `format_tasks.py` | 6 SFT task views + pretrain corpus (Qwen-clean) | oMeS self-check |
+| 9 | `splits.py` | stratified train/val (test = held-out oMe-Gold) + data card | `data/final/DATA_CARD.md` |
+
+Outputs land in `data/final/`: `sft_mechanisms.jsonl` (the oMeS-critical product),
+`sft_reactions.jsonl`, `sft_named_qa.jsonl`, `pretrain_corpus.txt`,
+`DATA_CARD.md`, `decontamination_report.json`, and `splits/`.
+
+Config lives in `configs/pipeline.yaml` (seeds, thresholds, per-source
+verdicts). Licensing is enforced: PMechDB/RMechDB (CC-BY-NC-ND) and OpenStax
+(no-AI clause) are quarantined; only redistributable sources are ingested.
+
 ## Training a specialist model
 
 A pipeline for fine-tuning a small (~1B) model to specialize in organic

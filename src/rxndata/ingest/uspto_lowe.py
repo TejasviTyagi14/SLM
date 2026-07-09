@@ -90,7 +90,7 @@ def ingest(cfg: Optional[Config] = None, limit: Optional[int] = None) -> List[Di
     records: List[Dict[str, Any]] = []
     rel = os.path.relpath(path, cfg.path("root"))
 
-    with open(path, "r", encoding="utf-8", errors="replace") as f:
+    with open(path, encoding="utf-8", errors="replace") as f:
         header = f.readline().rstrip("\n").split("\t")
         col = {name: i for i, name in enumerate(header)}
         for line_no, line in enumerate(f):

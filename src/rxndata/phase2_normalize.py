@@ -13,7 +13,7 @@ import json
 from typing import Dict, List, Optional
 
 from .config import load_config
-from .io_utils import read_interim, write_interim
+from .io_utils import read_interim
 from .normalize import SourceNormStats, has_rgroup, normalize_record
 from .opsin_resolve import java_available, resolve_name
 from .schema import records_to_rows
