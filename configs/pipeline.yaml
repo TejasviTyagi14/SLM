@@ -72,6 +72,14 @@ mechanism:
     enabled: true
     max_instances_per_template: 40 # bounded expansion to avoid one template dominating
     dedup_expanded: true
+    # Silver already expanded 151/167 templates; our expansion targets the 16
+    # NOT covered by silver, plus dedups its molecules against silver's set.
+    only_uncovered_by_silver: true
+  inference:
+    enabled: true
+    backend: template_application  # template_application | llm
+    llm_enabled: false             # requires an API key; off by default
+    review_sample_size: 25         # held-back inferred records for human review
   provenance_rank: [curated, template_expanded, inferred]   # dedup keeps highest
 
 atommap:
