@@ -1,0 +1,69 @@
+{"reaction_id": "SILVER-NG-007_1-CC(=O)C_2-CC_3-CC(=O)OCC", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=18)"]}
+{"reaction_id": "SILVER-NG-007_1-c1cnccc1_2-c1ccc(F)cc1_3-c1sc(Br)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=11)", "discontinuous_step:step2(heavy_delta=7)"]}
+{"reaction_id": "SILVER-NG-007_1-CC(=O)C_2-COCC_3-c1sc(Br)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step2(heavy_delta=12)"]}
+{"reaction_id": "SILVER-NG-007_1-c1cnccc1_2-c1cocc1_3-c1sc(Br)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=13)", "discontinuous_step:step2(heavy_delta=9)"]}
+{"reaction_id": "SILVER-NG-007_1-c1ccc(OC)cc1_2-c1ccc(F)cc1_3-c1ccc(N(=O)=O)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=12)", "discontinuous_step:step2(heavy_delta=10)"]}
+{"reaction_id": "SILVER-NG-007_1-C_2-CCC_3-CN(C)C(=O)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=18)", "discontinuous_step:step2(heavy_delta=14)"]}
+{"reaction_id": "SILVER-NG-007_1-CC(=O)C_2-c1ccc(C(F)(F)F)cc1_3-c1ccc(C#N)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=12)", "discontinuous_step:step2(heavy_delta=8)"]}
+{"reaction_id": "SILVER-NG-007_1-CC(=O)C_2-CC_3-C1=CC=C(C=C1)C2=CC=CC=C2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=8)"]}
+{"reaction_id": "SILVER-NG-007_1-c1ccc(OC)cc1_2-c1ccc(F)cc1_3-c1ccc(C)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=10)", "discontinuous_step:step2(heavy_delta=8)"]}
+{"reaction_id": "SILVER-NG-007_1-CC(=O)C_2-C1CC2CC3CC1C3C2_3-C1=CC=C(C=C1)C2=CC=CC=C2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=13)", "discontinuous_step:step2(heavy_delta=11)"]}
+{"reaction_id": "SILVER-NG-007_1-C(F)(F)F_2-C1CC2CC3CC1C3C2_3-CC(C)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=13)", "discontinuous_step:step2(heavy_delta=9)"]}
+{"reaction_id": "SILVER-NG-007_1-c1ccc(OC)cc1_2-C1CC2CC3CC1C3C2_3-CC(=O)OCC", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=11)", "discontinuous_step:step2(heavy_delta=9)"]}
+{"reaction_id": "SILVER-NG-007_1-C1CCCCC1_2-COCC_3-c1ccc(N(=O)=O)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=13)", "discontinuous_step:step2(heavy_delta=9)"]}
+{"reaction_id": "SILVER-NG-007_1-c1ccc(OC)cc1_2-C1CC2CC3CC1C3C2_3-c1ccc(C#N)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=13)", "discontinuous_step:step2(heavy_delta=11)"]}
+{"reaction_id": "SILVER-NG-007_1-c1ccc(OC)cc1_2-CC_3-CN(C)C(=O)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=14)", "discontinuous_step:step2(heavy_delta=10)"]}
+{"reaction_id": "SILVER-NG-007_1-CC(=O)C_2-c1ccc(F)cc1_3-CN(C)C(=O)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=15)", "discontinuous_step:step2(heavy_delta=11)"]}
+{"reaction_id": "SILVER-NG-007_1-c1ccc(OC)cc1_2-C1CC2CC3CC1C3C2_3-C1=CC=C(C=C1)C2=CC=CC=C2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=17)", "discontinuous_step:step2(heavy_delta=15)"]}
+{"reaction_id": "SILVER-NG-007_1-c1cnccc1_2-c1cocc1_3-c1ccc(C#N)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=11)", "discontinuous_step:step2(heavy_delta=7)"]}
+{"reaction_id": "SILVER-NG-007_1-C(F)(F)F_2-c1cocc1_3-CC(C)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=19)"]}
+{"reaction_id": "SILVER-NR-046_1-C(C)(C)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=20)"]}
+{"reaction_id": "SILVER-NR-046_1-CC=CC", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=20)"]}
+{"reaction_id": "SILVER-NR-046_1-COCCCC", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=20)"]}
+{"reaction_id": "SILVER-NR-048_1-C(C)(C)C_2-CC(C)(C)OC1=CC=C(C=C1)C2=CC=C(OC(C)(C)C)C=C2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=9)"]}
+{"reaction_id": "SILVER-NR-048_1-CCCC(C)C_2-C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=21)"]}
+{"reaction_id": "SILVER-NR-048_1-C_2-CC(C)(C)OC1=CC=C(C=C1)C2=CC=C(OC(C)(C)C)C=C2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=9)"]}
+{"reaction_id": "SILVER-NR-048_1-CC(C)(C)OC1=CC=C(C=C1)C2=CC=C(OC(C)(C)C)C=C2_2-C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=9)"]}
+{"reaction_id": "SILVER-NR-048_1-CC(C)(C)OC1=CC=C(C=C1)C2=CC=C(OC(C)(C)C)C=C2_2-CC", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=9)"]}
+{"reaction_id": "SILVER-NR-048_1-CC_2-C(C)(C)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=23)"]}
+{"reaction_id": "SILVER-NR-048_1-C_2-CC", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=25)"]}
+{"reaction_id": "SILVER-NR-048_1-CC(C)(C)OC1=CC=C(C=C1)C2=CC=C(OC(C)(C)C)C=C2_2-C(C)(C)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=9)"]}
+{"reaction_id": "SILVER-NR-048_1-CC_2-C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=25)"]}
+{"reaction_id": "SILVER-NR-110_1-C(C)C_2-P(=O)(c1ccccc1)c2ccccc2_3-c1ccc(OC)cc1_4-c1ccccc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step4(heavy_delta=11)"]}
+{"reaction_id": "SILVER-NR-110_1-c1ccccc1C_2-P(=O)(c1ccccc1)c2ccccc2_3-CC_4-c1ccc(N(C)C)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step4(heavy_delta=19)"]}
+{"reaction_id": "SILVER-NR-110_1-c1ccccc1_2-P(=O)(c1ccccc1)c2ccccc2_3-CC_4-C=CC", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step4(heavy_delta=17)"]}
+{"reaction_id": "SILVER-NR-118_1-c1ccc(OC)cc1_2-CCCC_3-C#N_4-C(=O)C_5-C(F)(F)F_6-CC(C)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=13)"]}
+{"reaction_id": "SILVER-NR-122_1-C#N_2-C(=O)C(F)(F)F_3-c1ccc(OC)cc1_4-c1occc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step2(heavy_delta=17)"]}
+{"reaction_id": "SILVER-NR-122_1-C(=O)C_2-C(=O)C(F)(F)F_3-c1ccc(OC)cc1_4-C(C)(C)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step2(heavy_delta=17)"]}
+{"reaction_id": "SILVER-NR-122_1-C(=O)OC_2-C#N_3-c1ccc(Cl)cc1_4-c1ccc(cc1)c2ccccc2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step2(heavy_delta=23)"]}
+{"reaction_id": "SILVER-NR-122_1-S(=O)(=O)C_2-C(=O)OCC_3-C1CCCCC1_4-C(C)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step2(heavy_delta=16)"]}
+{"reaction_id": "SILVER-NR-122_1-[N+](=O)[O-]_2-C(=O)C(F)(F)F_3-C1CCCCC1_4-C(C)(C)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step2(heavy_delta=19)"]}
+{"reaction_id": "SILVER-NR-122_1-[N+](=O)[O-]_2-C(=O)OCC_3-C=C_4-c1ccc(C(F)(F)F)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step2(heavy_delta=18)"]}
+{"reaction_id": "SILVER-NR-213_1-C(F)(F)F_2-Cc2ccccc2_3-CC(C)C_4-CC", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step4(heavy_delta=18)"]}
+{"reaction_id": "SILVER-NR-222_1-C(F)(F)F_2-C_3-c1ccco1_4-C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=10)"]}
+{"reaction_id": "SILVER-NR-222_1-C(F)(F)F_2-c1ccccc1_3-CC_4-c1ccc(Br)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=10)"]}
+{"reaction_id": "SILVER-NR-307_1-C(C)C_2-c1ccc(C)cc1_3-C#N_4-c1ccc(OC)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=21)"]}
+{"reaction_id": "SILVER-NR-307_1-C1CCCCC1_2-C(C)(C)C_3-COC_4-F", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=15)"]}
+{"reaction_id": "SILVER-NR-307_1-C_2-C(C)(C)C_3-CCCC_4-S(=O)(=O)c1ccccc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=19)"]}
+{"reaction_id": "SILVER-NR-307_1-c1ccc(OC)cc1_2-C(F)(F)F_3-C#N_4-c1cccc(C)c1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=22)"]}
+{"reaction_id": "SILVER-NR-307_1-c1ccc(OC)cc1_2-c1ccc(C)cc1_3-C1CC1_4-c1cccc(C)c1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=26)"]}
+{"reaction_id": "SILVER-NR-307_1-c1ccccc1_2-CC_3-COC_4-Cl", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=13)"]}
+{"reaction_id": "SILVER-NR-307_1-c1ccccc1_2-CC_3-COC_4-c1ccc(OC)cc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=20)"]}
+{"reaction_id": "SILVER-NR-307_1-c1ccoc1_2-CC_3-C#N_4-C(C)(C)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=14)"]}
+{"reaction_id": "SILVER-NR-307_1-c1ccoc1_2-c1ccccc1C_3-C1CCOC1_4-c1cccc(C)c1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step1(heavy_delta=25)"]}
+{"reaction_id": "SILVER-NR-309_1-c1ccc(OC)cc1_2-CC(C)C_3-C(F)(F)F_4-C(C)(C)C_5-c1ccco1_6-OS(=O)(=O)C(F)(F)F_7-P(c1ccc(F)cc1)c2ccc(F)cc2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step2(heavy_delta=58)"]}
+{"reaction_id": "SILVER-NR-312_10-C(=O)OC_1-F_2-CC_3-C_4-N(C(C)C)C(C)C_5-C1CCCCC1_6-[N+](=O)[O-]_7-c2ccccc2_8-c2ccc(C(F)(F)F)cc2_9-c2cnccn2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step2(heavy_delta=14)"]}
+{"reaction_id": "SILVER-NR-314_1-C(C)(C)C_2-CCCC(C)C_3-CC_4-CCCC(C)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=23)"]}
+{"reaction_id": "SILVER-NR-314_1-C(C)(C)C_2-CCCC(C)C_3-C_4-c1ccccc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=22)"]}
+{"reaction_id": "SILVER-NR-314_1-C(F)(F)F_2-C_3-C_4-C(F)(F)F", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=15)"]}
+{"reaction_id": "SILVER-NR-314_1-CC_2-C(C)(C)C_3-CCCC(C)C_4-CC", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=19)"]}
+{"reaction_id": "SILVER-NR-314_1-C_2-C(C)(C)C_3-c1ccccc1_4-c1ccccc1", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=22)"]}
+{"reaction_id": "SILVER-NR-314_1-C_2-CCCC(C)C_3-C(C)(C)C_4-CCCC(C)C", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=22)"]}
+{"reaction_id": "SILVER-NR-322_1-C(=O)OC_2-C(=O)c2ccccc2_3-C(C)(C)C_4-c2ccc(OC)cc2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=20)"]}
+{"reaction_id": "SILVER-NR-322_1-C(=O)OC_2-C1CCCCC1_3-C(C)(C)C_4-C(F)(F)F", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=20)"]}
+{"reaction_id": "SILVER-NR-322_1-C(F)(F)F_2-C2CCOC2_3-CC=CC_4-c2ccoc2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=20)"]}
+{"reaction_id": "SILVER-NR-322_1-C(F)(F)F_2-c2ccc(N(C)C)cc2_3-c2c(Cl)ccc(Cl)c2_4-c2ccoc2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=20)"]}
+{"reaction_id": "SILVER-NR-322_1-C_2-S(=O)(=O)c2ccccc2_3-c2c(Cl)ccc(Cl)c2_4-c2ccc(OC)cc2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=20)"]}
+{"reaction_id": "SILVER-NR-322_1-c2ccccc2_2-Br_3-c2ccccc2_4-c2ccoc2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=20)"]}
+{"reaction_id": "SILVER-NR-322_1-c2ccccc2_2-C2CCOC2_3-C1CCCCC1_4-c2ccoc2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=20)"]}
+{"reaction_id": "SILVER-NR-322_1-c2ccccc2_2-c2cnc(C(F)(F)F)cn2_3-c2ccc(F)cc2_4-c2ccc(OC)cc2", "source": "oMe-Silver", "provenance": "template_expanded", "reasons": ["discontinuous_step:step3(heavy_delta=20)"]}
