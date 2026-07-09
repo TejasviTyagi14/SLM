@@ -69,6 +69,21 @@ def make_step(
     }
 
 
+def _as_smiles_list(value: Any) -> List[str]:
+    """Coerce a SMILES field into a list of strings.
+
+    Some sources (e.g. a handful of oMe-Template records) store the reactant/
+    product SMILES as a BARE STRING instead of a list. ``list("CCO")`` would
+    explode it into characters, so we must wrap a string as a single-element
+    list. A ``.``-joined multi-fragment string is also split into components.
+    """
+    if value is None:
+        return []
+    if isinstance(value, str):
+        return [x for x in value.split(".") if x] if value else []
+    return [str(x) for x in value]
+
+
 def make_record(
     reaction_id: str,
     source: str,
@@ -91,8 +106,8 @@ def make_record(
         "provenance": provenance,
         "level": level,
         "name": name,
-        "reactants_smiles": list(reactants_smiles),
-        "products_smiles": list(products_smiles),
+        "reactants_smiles": _as_smiles_list(reactants_smiles),
+        "products_smiles": _as_smiles_list(products_smiles),
         "conditions": conditions,
         "reaction_smiles_mapped": reaction_smiles_mapped,
         "mechanism_step_nums": len(mechanism),

@@ -5,9 +5,9 @@ PY := .venv/bin/python
 PIP := .venv/bin/pip
 export PYTHONPATH := src
 
-.PHONY: all setup deps clone-omebench ontology phase1 test lint clean
+.PHONY: all setup deps clone-omebench ontology phase1 phase2 test lint clean
 
-all: phase1        ## (phases 2-9 appended as they land)
+all: phase1 phase2 ## (phases 3-9 appended as they land)
 
 setup: .venv deps clone-omebench ## create venv, install deps, clone oMeBench
 
@@ -31,6 +31,9 @@ ontology: ## (re)generate configs/ontology.json from the benchmark artifacts
 
 phase1: ontology ## Phase 1: ingest all enabled + license-cleared sources
 	$(PY) -m rxndata.phase1_ingest --json-out data/interim/_phase1_gate.json
+
+phase2: ## Phase 2: RDKit canonicalization + OPSIN + InChIKey molecule vocab
+	$(PY) -m rxndata.phase2_normalize --json-out data/interim/_phase2_gate.json
 
 test: ## run the pytest suite (schema, validators, ingest smoke)
 	$(PY) -m pytest tests/ -q

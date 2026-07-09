@@ -57,8 +57,19 @@ def _ensure_extracted(fetcher: PoliteFetcher) -> str:
     return str(target)
 
 
+def _strip_cx(rsmi: str) -> str:
+    """Drop Lowe's trailing CXSMILES fragment-grouping block (e.g. ' |f:3.5|').
+
+    Must happen BEFORE splitting on '.', because that block itself contains '.'
+    (fragment indices) which would otherwise be mis-parsed as component
+    separators, yielding garbage 'molecules' like '3|' or '3,5'.
+    """
+    return rsmi.split(" |", 1)[0].strip()
+
+
 def _split_rxn_smiles(rsmi: str):
     """reactants>agents>products -> (reactants[list], agents[list], products[list])."""
+    rsmi = _strip_cx(rsmi)
     parts = rsmi.split(">")
     if len(parts) != 3:
         return None
