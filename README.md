@@ -160,6 +160,38 @@ Config lives in `configs/pipeline.yaml` (seeds, thresholds, per-source
 verdicts). Licensing is enforced: PMechDB/RMechDB (CC-BY-NC-ND) and OpenStax
 (no-AI clause) are quarantined; only redistributable sources are ingested.
 
+### Publishing the dataset to Hugging Face
+
+`scripts/export_to_hf.py` packages `data/final/` into a multi-config Hub dataset
+(`sft_mechanisms`, `sft_reactions`, `pretrain`) with real train/validation splits
+routed from the decontaminated split manifests (no train/val leakage), and a
+dataset card whose license tag is **derived from the data** (MIT for the Tier-A
+build; CC-BY-SA propagates if you rebuild with ORD).
+
+```bash
+pip install datasets huggingface_hub
+
+# 1) Always dry-run first (no network): builds configs + writes a local preview
+#    to data/final/hf_export/ and prints the push commands.
+python scripts/export_to_hf.py --repo-id <user>/rxndata-mechanisms --dry-run
+
+# 2) Authenticate, then push for real.
+huggingface-cli login          # or: export HF_TOKEN=hf_...
+python scripts/export_to_hf.py --repo-id <user>/rxndata-mechanisms
+```
+
+Then load it back:
+
+```python
+from datasets import load_dataset
+ds = load_dataset("<user>/rxndata-mechanisms", "sft_mechanisms")
+import json
+messages = json.loads(ds["train"][0]["messages"])   # chat rows
+```
+
+The card carries the license inventory, per-source verdicts, and the
+decontamination proof (0 oMe-Gold leaks). Flags: `--subsets`, `--private`.
+
 ## Training a specialist model
 
 A pipeline for fine-tuning a small (~1B) model to specialize in organic

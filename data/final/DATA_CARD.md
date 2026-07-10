@@ -7,7 +7,6 @@ A training-ready dataset for a reaction-mechanism LM, optimized for oMeBench/oMe
 - Clean mechanism records (post validate+decon+dedup): **2338**
 - Train / Val: **2217 / 121** (stratified by dominant subtype + level; 30 strata)
 - Test: the official **oMe-Gold** (196 rxns), held out — never trained on.
-- oMeS format-check: 300/300 gold targets score S_partial=1.0, S_total=1.0 (ceiling).
 - Ontology: 11 types / 31 subtypes (parsed from the benchmark).
 
 ## Provenance
@@ -79,14 +78,6 @@ No paywalled/copyrighted sources are ingested. NC-ND sources (PMechDB, RMechDB) 
 
 ## Task views (Phase 8)
 
-- mechanism_full: 2338
-- mechanism_next_step: 7545
-- forward_prediction: 23088
-- retrosynthesis: 23088
-- reagent_prediction: 17735
-- named_reaction_qa: 60
-
-Qwen tokenizer (Qwen/Qwen2.5-1.5B-Instruct): p50=2159 p95=2564 max=3488 tokens, 0/2000 over the 8192 budget.
 
 ## Known gaps
 
