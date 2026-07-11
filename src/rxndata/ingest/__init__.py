@@ -13,6 +13,8 @@ from typing import Dict
 _MODULES = {
     "ome_silver": "rxndata.ingest.ome_silver",
     "ome_template": "rxndata.ingest.ome_template",
+    "pmechdb": "rxndata.ingest.pmechdb",
+    "rmechdb": "rxndata.ingest.rmechdb",
     "ord": "rxndata.ingest.ord",
     "uspto_lowe": "rxndata.ingest.uspto_lowe",
     "wikipedia": "rxndata.ingest.wikipedia",

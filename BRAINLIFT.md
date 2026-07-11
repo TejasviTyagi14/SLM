@@ -42,6 +42,20 @@ Elaboration: There is an *active, live disagreement* in the literature (DOK2): t
 **5. Benchmark in-domain overfitting inflates apparent skill — much "chemical reasoning" is retrieval, memorization, and copying, and domain-tuned models can underperform general models on genuinely novel mechanisms.**
 Elaboration: The Memorization study finds ICL benefit is **~2x larger for computed than experimental properties** and that apparent gains can be copying rather than reasoning (DOK1); ICL scaffolds help big models most but "gains can be memorization/copying" (DOK2). Meanwhile oMeBench shows **domain models near-zero on mechanism reasoning** even as general frontier models lead (DOK1), and GPQA-Diamond analysis shows organic chemistry is the **hardest subfield — 70% of the 40 hardest questions vs 36% of the full set** — precisely because it needs spatial/diagram/causal reasoning that resists memorization (DOK1). This synthesizes the DOK3 "held-out mechanisms are the real test" Insight. Implication: we must evaluate on literature-verified, held-out mechanisms (oMe-Gold) and treat strong scores on templated/in-distribution splits (oMe-Template) with suspicion; a model that looks great in-domain may be memorizing scaffolds, not pushing arrows.
 
+### From SPOV to code: the implemented training recipe
+
+The SPOVs above are now operationalized in `training/` (full evidence map in
+[`docs/sota_features.md`](docs/sota_features.md)). Each lever traces to the SPOV
+it acts on:
+
+- **CoT rejection-sampling distillation** (`training/distill_cot.py`) — operationalizes SPOV-2 + Insight-8 (distillation transfers reusable *process*). A frontier model writes answer-conditioned reasoning; only traces whose final answer passes oMeS (`S_partial ≥ 0.9`, validity `= 1.0`) are kept, then decontaminated. Warm-starting RL on verified long CoT is the field's highest-payoff move (ether0, RetroDFM-R).
+- **DAPO RL** (`training/algo.py`, `--algo dapo`) — operationalizes SPOV-2. Token-level loss + clip-higher + dynamic sampling remove GRPO's short-completion bias, which matters because mechanism CoT is long (SPOV-3's multi-step collapse is where the reward must reach).
+- **Hardened, gated reward** (`training/reward.py`) — directly answers SPOV-2's reward-hacking caveat and SPOV-3. A multiplicative format gate refuses to reward invalid-but-lucky outputs; per-step *subtype + structure* fidelity (not endpoint similarity) is the signal; an explicit validity term and a monitoring callback (`training/callbacks.py`) guard against the RL validity collapse documented in PSV-PPO.
+- **Difficulty curriculum** (`training/curriculum.py`) — operationalizes Insight-3 (the easy→hard *slope* is the real failure surface): train easy→medium→hard so effort concentrates where multi-step reasoning breaks.
+- **SMILES augmentation** (`build_sft_data.py --augment`) — operationalizes SPOV-5: randomizing input representations (canonical targets) discourages scaffold memorization and rewards representation-invariant reasoning.
+- **Decontamination everywhere** — the SPOV-5 discipline made non-negotiable: every new data path (distilled, augmented, external) flows through the Phase-6 oMe-Gold/Template blacklist, tested, so held-out mechanisms stay the real test.
+- **External elementary-step corpora** (`ingest/{pmechdb,rmechdb}.py`) — the scarce genuine-mechanism data SPOV-1/SPOV-2 want more of, but **license-gated**: CC-BY-NC-ND ⇒ quarantined, disabled, never bundled — honesty about provenance is itself part of SPOV-5.
+
 ## Experts
 
 - **Kevin Jablonka** — Who: PI at FSU Jena / HIPOLE Jena. Focus: LLM evaluation for chemistry, chemistry pretraining corpora (ChemBench, ChemPile). Why Follow: co-created the peer-reviewed ChemBench benchmark (Nature Chemistry) and the >75B-token ChemPile corpus; central voice in the domain-pretraining school and in rigorous chem-LLM evaluation. Where: https://kjablonka.com/bio.html

@@ -31,8 +31,13 @@ sources:
   # SPEC CORRECTION: the spec assumed PMechDB="public/academic" and RMechDB="CC-BY-4.0".
   # BOTH are actually CC-BY-NC-ND-4.0 (the *paper* is CC-BY; the *dataset* is NC-ND).
   # The ND clause forbids redistributing a derived corpus -> QUARANTINE, needs human OK.
-  pmechdb:      {enabled: false, tier: A, verdict: quarantine, license: "CC-BY-NC-ND-4.0"}
-  rmechdb:      {enabled: false, tier: A, verdict: quarantine, license: "CC-BY-NC-ND-4.0"}
+  # Ingesters exist (src/rxndata/ingest/{pmechdb,rmechdb}.py) and are schema-tested,
+  # but stay DISABLED + quarantined: CC-BY-NC-ND forbids redistributing a derived
+  # corpus. To use for local research only, a human must (1) accept the provider's
+  # click-through license, (2) place the CSV at data/raw/<path>, (3) flip enabled+
+  # verdict here. `path` is relative to paths.raw.
+  pmechdb:      {enabled: false, tier: A, verdict: quarantine, license: "CC-BY-NC-ND-4.0", path: "pmechdb/manually_curated_train.csv"}
+  rmechdb:      {enabled: false, tier: A, verdict: quarantine, license: "CC-BY-NC-ND-4.0", path: "rmechdb/manually_curated_train.csv"}
   ome_silver:   {enabled: true,  tier: A, verdict: usable,     license: "MIT"}   # this repo
   ome_template: {enabled: true,  tier: A, verdict: usable,     license: "MIT"}   # this repo
   # ---- TIER B: overall reactions (supporting) ----

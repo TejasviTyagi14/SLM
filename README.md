@@ -195,28 +195,41 @@ decontamination proof (0 oMe-Gold leaks). Flags: `--subsets`, `--private`.
 ## Training a specialist model
 
 A pipeline for fine-tuning a small (~1B) model to specialize in organic
-mechanisms lives in `training/`. Strategy: **SFT for format/patterns → GRPO
-against the verifiable oMeS reward** (the paper stopped at SFT; RL is the main
-untapped lever). See the feasibility notes below for realistic targets.
+mechanisms lives in `training/`. Strategy: **SFT (silver + distilled CoT) → RL
+(GRPO/DAPO) against the verifiable oMeS reward** (the paper stopped at SFT; RL is
+the main untapped lever). The SOTA levers — distillation, DAPO, reward gating,
+validity monitoring, curriculum, SMILES augmentation, DoRA — are documented with
+their evidence in [`docs/sota_features.md`](docs/sota_features.md). See the
+feasibility notes below for realistic targets.
 
 ```bash
 pip install -r requirements-train.txt   # heavier: torch/transformers/trl/peft
 
-# 1) Build RDKit-validated chat SFT data from oMe-Silver (2,493 rxns w/ rationales)
-python -m training.build_sft_data --dataset silver --style cot --val-frac 0.03
+# 1) Build RDKit-validated chat SFT data from oMe-Silver (2,493 rxns w/ rationales).
+#    --augment N adds randomized-SMILES INPUT variants (train only; canonical targets).
+python -m training.build_sft_data --dataset silver --style cot --val-frac 0.03 --augment 4
 
-# 2) Supervised fine-tune a ~1B base (add --lora for small GPUs)
+# 1b) (BIGGEST LEVER) Distill long verified CoT from a frontier model: only traces
+#     whose final answer scores S_partial>=0.9 on oMeS are kept, then decontaminated.
+python -m training.distill_cot --dataset silver --model opus \
+  --limit 1000 --keep-threshold 0.9 --out-dir training/data
+
+# 2) Supervised fine-tune a ~1B base (--dora for weight-decomposed LoRA on small GPUs;
+#    --max-seq-len defaults to 6000 to fit long mechanism CoT; --curriculum = easy→hard)
 python -m training.sft_train \
   --model Qwen/Qwen2.5-1.5B-Instruct \
-  --train training/data/sft_silver_cot_train.jsonl \
-  --val   training/data/sft_silver_cot_val.jsonl \
-  --out   checkpoints/sft-qwen1.5b-cot --epochs 3
+  --train training/data/sft_distilled_cot_train.jsonl \
+  --val   training/data/sft_distilled_cot_val.jsonl \
+  --out   checkpoints/sft-qwen1.5b-cot --epochs 3 --dora
 
-# 3) RL against oMeS (samples N mechanisms/reaction, rewards partial score + validity)
+# 3) RL against oMeS. --algo dapo (token-level loss + clip-higher, better for long
+#    CoT); --reward omes+roundtrip adds a pluggable forward-model feasibility term.
+#    A callback logs reward/S_partial/validity/length and warns on validity collapse.
 python -m training.grpo_train \
   --model checkpoints/sft-qwen1.5b-cot \
   --train training/data/sft_silver_cot_train.jsonl \
-  --out   checkpoints/grpo-qwen1.5b-cot --num-generations 8
+  --out   checkpoints/grpo-qwen1.5b-cot \
+  --algo dapo --reward omes+roundtrip --num-generations 8 --validity-floor 0.8
 
 # 4) Evaluate the checkpoint with the SAME harness (concurrency 1 for a local GPU model)
 python -m omebench_eval.cli run --models mymodel \
@@ -229,10 +242,16 @@ Pipeline pieces:
 
 | File | Role |
 | --- | --- |
-| `training/build_sft_data.py` | Silver → chat SFT JSONL (plain/CoT), every intermediate RDKit-validated; also emits `prompt` + `reference` for RL. |
-| `training/reward.py` | `omes_reward` — GRPO-compatible verifiable reward (oMeS partial + validity/format shaping). |
-| `training/sft_train.py` | TRL `SFTTrainer` (assistant-only loss, optional LoRA). |
-| `training/grpo_train.py` | TRL `GRPOTrainer` using the oMeS reward. |
+| `training/build_sft_data.py` | Silver → chat SFT JSONL (plain/CoT), every intermediate RDKit-validated; `--augment N` SMILES aug; decontaminated; emits `prompt` + `reference` for RL. |
+| `training/distill_cot.py` | Frontier CoT rejection-sampling distillation (answer-conditioned, oMeS-verified, decontaminated). |
+| `training/reward.py` | Gated oMeS reward + `validity_reward` + optional round-trip; weights as constants + `grpo_train` flags. |
+| `training/forward_model.py` | Pluggable forward model for the round-trip reward (no-op default). |
+| `training/algo.py` | GRPO vs DAPO config builder (`--algo`), filtered to the installed TRL's knobs. |
+| `training/callbacks.py` | `MechMonitor` + TrainerCallback: logs reward/S_partial/validity/length, enforces a validity floor. |
+| `training/curriculum.py` | easy→medium→hard ordering (`--curriculum`). |
+| `training/sft_train.py` | TRL `SFTTrainer` (assistant-only loss, `--lora`/`--dora`, `--curriculum`, `--max-seq-len 6000`). |
+| `training/grpo_train.py` | TRL `GRPOTrainer` (`--algo`, `--reward`, reward-weight flags, `--curriculum`, `--dora`, validity monitoring). |
+| `src/rxndata/ingest/{pmechdb,rmechdb}.py` | External elementary-step corpora (CC-BY-NC-ND → quarantined/disabled; user-supplied data only). |
 | `omebench_eval.providers.LocalHFProvider` | Runs the resulting checkpoint through the eval harness. |
 
 ### Running on TrueFoundry

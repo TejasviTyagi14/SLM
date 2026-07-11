@@ -1,28 +1,45 @@
-"""GRPO RL fine-tuning against the verifiable oMeS reward (TRL).
+"""GRPO/DAPO RL fine-tuning against the verifiable oMeS reward (TRL).
 
 Run this after SFT. It samples multiple mechanisms per reaction, scores each
 with oMeS (see training/reward.py), and optimizes the policy toward higher
 partial scores + validity. This is the step the oMeBench paper did NOT do and is
 the main lever for a small specialist to punch above its weight.
 
-Example (single GPU)
---------------------
+SOTA knobs wired in (see docs/sota_features.md):
+  --algo {grpo,dapo}   DAPO = token-level loss + clip-higher + dynamic sampling,
+                       better for long mechanism CoT (RetroDFM-R arXiv:2507.17448).
+  --reward {omes,omes+roundtrip}   multiplicative-gated oMeS, optional round-trip
+                       feasibility term (RTRL arXiv:2510.01527).
+  --curriculum         order reactions easy -> medium -> hard.
+  --dora / --lora-r    DoRA (arXiv:2402.09353) + sweepable LoRA rank.
+  validity monitoring  a callback logs reward/S_partial/validity/length and warns
+                       if validity collapses (PSV-PPO arXiv:2505.00530).
+
+Example (single GPU, DAPO)
+--------------------------
   python -m training.grpo_train \
       --model checkpoints/sft-qwen1.5b-cot \
       --train training/data/sft_silver_cot_train.jsonl \
       --out   checkpoints/grpo-qwen1.5b-cot \
-      --num-generations 8 --lr 1e-6 --batch 8 --grad-accum 4
+      --algo dapo --reward omes+roundtrip --num-generations 8 \
+      --lr 1e-6 --batch 8 --grad-accum 4
 
 Notes
 -----
 - The train JSONL already contains a `prompt` (chat) column and a `reference`
   column, which is exactly what GRPO + omes_reward need.
 - Prefer vLLM for generation speed: add --use-vllm (requires `pip install vllm`).
+- DAPO knobs require a recent TRL (`loss_type="dapo"`, `epsilon_high`,
+  `mask_truncated_completions`); on older TRL they are dropped with a warning and
+  the run falls back to GRPO-with-defaults for the missing knobs.
 """
 
 from __future__ import annotations
 
 import argparse
+import json
+
+from training.algo import ALGOS, DEFAULT_EPSILON_HIGH
 
 
 def parse_args() -> argparse.Namespace:
@@ -46,10 +63,54 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--save-steps", type=int, default=100)
     ap.add_argument("--bf16", action="store_true", default=True)
     ap.add_argument("--use-vllm", action="store_true")
+
+    # --- Algorithm (Feature 2: DAPO) ---
+    ap.add_argument("--algo", choices=ALGOS, default="grpo",
+                    help="RL objective. dapo = token-level loss + clip-higher + "
+                         "dynamic sampling (better for long CoT).")
+    ap.add_argument("--epsilon-high", type=float, default=DEFAULT_EPSILON_HIGH,
+                    help="DAPO clip-higher upper epsilon (only used with --algo dapo).")
+    ap.add_argument("--no-dynamic-sampling", dest="dynamic_sampling",
+                    action="store_false", default=True,
+                    help="Disable DAPO dynamic sampling / truncated-completion masking.")
+
+    # --- Reward (Feature 3) ---
+    ap.add_argument("--reward", choices=["omes", "omes+roundtrip"], default="omes",
+                    help="Reward composition. omes+roundtrip adds a forward-model "
+                         "feasibility term (no-op unless a forward model is wired).")
+    ap.add_argument("--w-spartial", type=float, default=None)
+    ap.add_argument("--w-validity", type=float, default=None)
+    ap.add_argument("--w-format", type=float, default=None)
+    ap.add_argument("--w-roundtrip", type=float, default=None)
+
+    # --- Monitoring (Feature 4) ---
+    ap.add_argument("--validity-floor", type=float, default=0.8,
+                    help="Warn if mean SMILES validity drops below this over a window.")
+    ap.add_argument("--fail-on-validity-collapse", action="store_true",
+                    help="Raise (stop training) instead of warning when below floor.")
+
+    # --- Curriculum (Feature 5) ---
+    ap.add_argument("--curriculum", action="store_true",
+                    help="Order reactions easy -> medium -> hard (disables shuffle).")
+
+    # --- LoRA / DoRA (Feature 7) ---
     ap.add_argument("--lora", action="store_true")
+    ap.add_argument("--dora", action="store_true",
+                    help="Use DoRA (weight-decomposed LoRA); implies --lora.")
     ap.add_argument("--lora-r", type=int, default=16)
     ap.add_argument("--lora-alpha", type=int, default=32)
     return ap.parse_args()
+
+
+def _reward_weight_kwargs(args) -> dict:
+    from training import reward as R
+
+    return {
+        "w_spartial": args.w_spartial if args.w_spartial is not None else R.W_SPARTIAL,
+        "w_validity": args.w_validity if args.w_validity is not None else R.W_VALIDITY,
+        "w_format": args.w_format if args.w_format is not None else R.W_FORMAT,
+        "w_roundtrip": args.w_roundtrip if args.w_roundtrip is not None else R.W_ROUNDTRIP,
+    }
 
 
 def main() -> None:
@@ -59,20 +120,39 @@ def main() -> None:
     from transformers import AutoTokenizer
     from trl import GRPOConfig, GRPOTrainer
 
-    from training.reward import format_reward, omes_reward
+    from training.algo import build_algo_config_kwargs, filter_supported_kwargs
+    from training.callbacks import (
+        MechMonitor,
+        instrument_reward_funcs,
+        make_monitor_callback,
+    )
+    from training.curriculum import level_histogram, order_by_difficulty
+    from training.reward import build_reward_funcs
 
     tokenizer = AutoTokenizer.from_pretrained(args.model, trust_remote_code=True)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
     ds = load_dataset("json", data_files={"train": args.train})["train"]
+
+    # Curriculum ordering must happen BEFORE we drop the 'level' column, and
+    # requires shuffling to be off so the order survives into training.
+    shuffle = True
+    if args.curriculum:
+        rows = order_by_difficulty(list(ds))
+        print(f"[curriculum] level histogram: {json.dumps(level_histogram(rows))}")
+        from datasets import Dataset
+
+        ds = Dataset.from_list(rows)
+        shuffle = False
+
     # GRPO needs 'prompt' and any reward-func kwargs columns (here 'reference').
     keep = {"prompt", "reference"}
     drop_cols = [c for c in ds.column_names if c not in keep]
     ds = ds.remove_columns(drop_cols)
 
     peft_config = None
-    if args.lora:
+    if args.lora or args.dora:
         from peft import LoraConfig
 
         peft_config = LoraConfig(
@@ -82,9 +162,16 @@ def main() -> None:
             bias="none",
             task_type="CAUSAL_LM",
             target_modules="all-linear",
+            use_dora=bool(args.dora),
         )
 
-    cfg = GRPOConfig(
+    # Reward functions (Feature 3) + validity monitor (Feature 4).
+    reward_funcs = build_reward_funcs(reward=args.reward, **_reward_weight_kwargs(args))
+    monitor = MechMonitor(validity_floor=args.validity_floor)
+    reward_funcs = instrument_reward_funcs(reward_funcs, monitor)
+    monitor_cb = make_monitor_callback(monitor, raise_on_floor=args.fail_on_validity_collapse)
+
+    base_cfg = dict(
         output_dir=args.out,
         num_generations=args.num_generations,
         learning_rate=args.lr,
@@ -99,16 +186,29 @@ def main() -> None:
         save_steps=args.save_steps,
         bf16=args.bf16,
         use_vllm=args.use_vllm,
+        shuffle_dataset=shuffle,
         report_to="none",
     )
+    # Algorithm knobs (Feature 2), filtered to what the installed TRL supports.
+    algo_kwargs = build_algo_config_kwargs(
+        algo=args.algo,
+        epsilon_high=args.epsilon_high,
+        dynamic_sampling=args.dynamic_sampling,
+        mask_truncated=args.dynamic_sampling,
+    )
+    base_cfg = filter_supported_kwargs({**base_cfg, **algo_kwargs}, GRPOConfig)
+    cfg = GRPOConfig(**base_cfg)
+    print(f"[grpo] algo={args.algo} reward={args.reward} curriculum={args.curriculum} "
+          f"dora={args.dora}")
 
     trainer = GRPOTrainer(
         model=args.model,
         args=cfg,
         train_dataset=ds,
         processing_class=tokenizer,
-        reward_funcs=[omes_reward, format_reward],
+        reward_funcs=reward_funcs,
         peft_config=peft_config,
+        callbacks=[monitor_cb],
     )
     trainer.train()
     trainer.save_model(args.out)

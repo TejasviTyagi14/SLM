@@ -2,8 +2,11 @@
 # Install into the same venv: pip install -r requirements-train.txt
 torch>=2.4.0
 transformers>=4.55.0
+# trl>=0.21.0 for GRPO; DAPO (--algo dapo) needs a build exposing GRPOConfig
+# loss_type="dapo" + epsilon_high + mask_truncated_completions. Unsupported knobs
+# are dropped with a warning on older TRL (see training/algo.py), so GRPO still runs.
 trl>=0.21.0
-peft>=0.13.0
+peft>=0.13.0     # >=0.13 for DoRA (use_dora=True in LoraConfig, --dora)
 accelerate>=1.0.0
 datasets>=3.0.0
 # Optional but strongly recommended for fast GRPO rollouts:
